@@ -48,12 +48,22 @@
             height: 10rem;
             margin-bottom: 1rem;
         }
+        /* Custom styles for logo image if needed */
+        .header-logo {
+            max-height: 150px; /* Adjust as needed */
+            width: auto;
+        }
+        @media (min-width: 768px) {
+            .header-logo {
+                max-height: 200px; /* Larger on desktop */
+            }
+        }
     </style>
 </head>
 <body>
 
     <header class="text-center py-8 relative">
-        <h1 class="font-bebas text-7xl md:text-8xl tracking-wider gradient-text">BICEP GUYS</h1>
+        <img src="images/bicep-guys-logo.jpg" alt="Bicep Guys Fast Food Kebabs Logo" class="mx-auto header-logo object-contain mb-2">
         <p class="mt-2 text-xl text-gray-300">Fuel Your Goals, Deliciously. Always Guilt-Free. No Seed Oils.</p>
         <nav class="mt-6">
             <button id="nav-menu" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300 selected-nav-button">Menu</button>
