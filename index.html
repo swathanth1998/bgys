@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bicep Guys - Interactive Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
+        .font-bebas {
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #FDB813, #FFAA00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .selected-btn {
+            background-color: #FDB813 !important;
+            color: #1a1a1a !important;
+            border-color: #FDB813 !important;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="text-center py-12">
+        <h1 class="font-bebas text-7xl md:text-8xl tracking-wider gradient-text">BICEP GUYS</h1>
+        <p class="mt-2 text-xl text-gray-300">Fuel Your Goals, Deliciously. Always Guilt-Free. No Seed Oils.</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+
+        <section id="menu-intro" class="text-center mb-12">
+            <h2 class="font-bebas text-5xl tracking-wide mb-4">Build Your Power Meal</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-400">
+                Welcome to the ultimate fuel station. Our menu is designed for performance and taste. Select a kebab, choose your protein, pick your size, and add one of our guilt-free sauces to complete your perfect high-protein meal. Every kebab comes with a side of rice and a nutrient-packed veggie bowl.
+            </p>
+        </section>
+
+        <section id="kebab-menu">
+            <div id="filter-container" class="flex flex-wrap justify-center gap-3 mb-10">
+            </div>
+
+            <div id="kebab-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+        </section>
+
+        <section id="sauces-section" class="mt-20">
+            <h2 class="font-bebas text-5xl tracking-wide text-center mb-10">Guilt-Free Power Sauces</h2>
+            <div id="sauce-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="text-center py-6 bg-black bg-opacity-30">
+        <p class="text-gray-400">&copy; 2025 Bicep Guys. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const menuData = {
+            kebabs: [
+                { id: 1, name: "Olympian Original", desc: "Classic Mediterranean: Garlic, oregano, lemon, olive oil marinade.", proteins: ["Chicken", "Steak", "Lamb", "Plant-Based"] },
+                { id: 2, name: "Smoky Shredder", desc: "Smoky Chipotle-Lime: Chipotle peppers, lime zest, smoked paprika.", proteins: ["Chicken", "Steak", "Plant-Based"] },
+                { id: 3, name: "Tandoori Titan", desc: "Tandoori Power: Yogurt, turmeric, ginger, garam masala.", proteins: ["Chicken", "Lamb", "Plant-Based"] },
+                { id: 4, name: "Seoul Surge", desc: "Korean BBQ Fire: Gochujang, sesame, scallion, honey glaze.", proteins: ["Chicken", "Steak", "Plant-Based"] },
+                { id: 5, name: "Zesty Zenith", desc: "Zesty Herb & Citrus: Parsley, cilantro, orange, lemon, chili flakes.", proteins: ["Chicken", "Plant-Based"] },
+                { id: 6, name: "Island Inferno", desc: "Spicy Jamaican Jerk: Allspice, thyme, Scotch bonnet, cinnamon.", proteins: ["Chicken", "Steak"] },
+                { id: 7, name: "Golden Gains", desc: "Honey Mustard Crunch: Honey, Dijon, cracked pepper, toasted seeds.", proteins: ["Chicken", "Plant-Based"] },
+                { id: 8, name: "Garlic Gauntlet", desc: "Garlic Parmesan: Roasted garlic, parmesan, Italian herbs.", proteins: ["Chicken", "Steak", "Plant-Based"] },
+                { id: 9, name: "Teriyaki Triumph", desc: "Teriyaki Ginger: Soy, ginger, pineapple, green onion.", proteins: ["Chicken", "Steak", "Plant-Based"] },
+                { id: 10, name: "Buffalo Beast", desc: "Buffalo Sriracha: Hot sauce, sriracha, celery seed, blue cheese drizzle.", proteins: ["Chicken"] }
+            ],
+            prices: {
+                "Chicken": { "Mini Muscle": 10.99, "Gainz Grill": 14.99, "Bicep Beast": 18.99 },
+                "Steak": { "Mini Muscle": 11.49, "Gainz Grill": 15.49, "Bicep Beast": 19.49 },
+                "Lamb": { "Mini Muscle": 12.99, "Gainz Grill": 16.99, "Bicep Beast": 20.99 },
+                "Plant-Based": { "Mini Muscle": 10.99, "Gainz Grill": 14.99, "Bicep Beast": 18.99 }
+            },
+            sauces: [
+                { name: "Gym God Garlic Dip", desc: "Creamy garlic-herb dip", price: 1.00 },
+                { name: "Chipotle Powerhouse", desc: "Smoky chipotle kick", price: 1.00 },
+                { name: "Cool Down Cucumber-Dill", desc: "Refreshing and light", price: 0.75 },
+                { name: "Sweet Gains Honey-Lime", desc: "Subtle sweet & zesty", price: 0.75 },
+                { name: "Spicy Flex Sriracha Swirl", desc: "Creamy with extra heat", price: 1.00 }
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const kebabGrid = document.getElementById('kebab-grid');
+            const sauceGrid = document.getElementById('sauce-grid');
+            const filterContainer = document.getElementById('filter-container');
+
+            const allProteins = ["All", ...new Set(menuData.kebabs.flatMap(k => k.proteins))];
+
+            function renderFilters() {
+                filterContainer.innerHTML = allProteins.map(protein => `
+                    <button class="filter-btn font-bebas text-xl tracking-wider py-2 px-5 rounded-md border-2 border-gray-600 hover:bg-yellow-500 hover:text-black transition-colors duration-300 ${protein === 'All' ? 'selected-btn' : ''}" data-filter="${protein}">
+                        ${protein}
+                    </button>
+                `).join('');
+            }
+
+            function renderKebabs(filter = 'All') {
+                kebabGrid.innerHTML = '';
+                const filteredKebabs = filter === 'All'
+                    ? menuData.kebabs
+                    : menuData.kebabs.filter(kebab => kebab.proteins.includes(filter));
+
+                filteredKebabs.forEach(kebab => {
+                    const firstProtein = kebab.proteins[0];
+                    const firstSize = "Gainz Grill";
+                    const initialPrice = menuData.prices[firstProtein][firstSize].toFixed(2);
+
+                    const card = document.createElement('div');
+                    card.className = 'kebab-card bg-gray-800 bg-opacity-50 rounded-lg shadow-lg p-6 flex flex-col transition-all duration-300';
+                    card.dataset.proteins = kebab.proteins.join(',');
+
+                    card.innerHTML = `
+                        <div class="flex-grow">
+                            <h3 class="font-bebas text-3xl gradient-text">${kebab.name}</h3>
+                            <p class="text-gray-400 mb-4 h-12">${kebab.desc}</p>
+
+                            <div class="mb-4">
+                                <label class="font-bold text-gray-300">Protein:</label>
+                                <div class="flex flex-wrap gap-2 mt-2 protein-selector">
+                                    ${kebab.proteins.map((p, index) => `<button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors ${index === 0 ? 'selected-btn' : ''}" data-protein="${p}">${p}</button>`).join('')}
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="font-bold text-gray-300">Size:</label>
+                                <div class="flex flex-wrap gap-2 mt-2 size-selector">
+                                    <button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors" data-size="Mini Muscle">30g Protein</button>
+                                    <button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors selected-btn" data-size="Gainz Grill">60g Protein</button>
+                                    <button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors" data-size="Bicep Beast">100g Protein</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-auto">
+                            <span class="price-display font-bebas text-5xl text-white">$${initialPrice}</span>
+                        </div>
+                    `;
+                    kebabGrid.appendChild(card);
+                });
+            }
+
+            function renderSauces() {
+                sauceGrid.innerHTML = menuData.sauces.map(sauce => `
+                    <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 text-center">
+                        <h4 class="font-bebas text-2xl text-yellow-400">${sauce.name}</h4>
+                        <p class="text-gray-400 text-sm mb-2">${sauce.desc}</p>
+                        <p class="font-bold text-lg">$${sauce.price.toFixed(2)}</p>
+                    </div>
+                `).join('');
+            }
+            
+            function updatePrice(card) {
+                const selectedProtein = card.querySelector('.protein-selector .selected-btn').dataset.protein;
+                const selectedSize = card.querySelector('.size-selector .selected-btn').dataset.size;
+                const priceDisplay = card.querySelector('.price-display');
+
+                const price = menuData.prices[selectedProtein]?.[selectedSize];
+                if (price !== undefined) {
+                    priceDisplay.textContent = `$${price.toFixed(2)}`;
+                } else {
+                    priceDisplay.textContent = 'N/A';
+                }
+            }
+
+            kebabGrid.addEventListener('click', e => {
+                const target = e.target;
+                if (!target.classList.contains('kebab-btn')) return;
+
+                const card = target.closest('.kebab-card');
+                const selector = target.parentElement;
+
+                selector.querySelectorAll('.kebab-btn').forEach(btn => btn.classList.remove('selected-btn'));
+                target.classList.add('selected-btn');
+                
+                updatePrice(card);
+            });
+            
+            filterContainer.addEventListener('click', e => {
+                const target = e.target;
+                if (!target.classList.contains('filter-btn')) return;
+
+                filterContainer.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('selected-btn'));
+                target.classList.add('selected-btn');
+                
+                const filter = target.dataset.filter;
+                const kebabCards = document.querySelectorAll('.kebab-card');
+                
+                kebabCards.forEach(card => {
+                    const cardProteins = card.dataset.proteins.split(',');
+                    if (filter === 'All' || cardProteins.includes(filter)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            renderFilters();
+            renderKebabs();
+            renderSauces();
+        });
+    </script>
+</body>
+</html>
