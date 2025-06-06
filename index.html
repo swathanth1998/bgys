@@ -11,8 +11,8 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #1a1a1a;
-            color: #f1f1f1;
+            background-color: #f8f8f8; /* Lighter background */
+            color: #333333; /* Darker text for contrast */
         }
         .font-bebas {
             font-family: 'Bebas Neue', sans-serif;
@@ -36,7 +36,6 @@
         .section-hidden {
             display: none;
         }
-        /* Permanent image display */
         .kebab-image-wrapper {
             height: 10rem; /* Fixed height for permanent display */
             opacity: 1; /* Always visible */
@@ -57,25 +56,25 @@
                 max-height: 200px; /* Larger on desktop */
             }
         }
-        /* Background texture (subtle) */
-        body {
-            background-image: radial-gradient(circle at 100% 100%, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%),
-                              radial-gradient(circle at 0% 0%, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
-            background-attachment: fixed;
-            background-size: 80% 80%;
-            background-position: top left, bottom right;
+        /* Card styling adjustments for light theme */
+        .bg-card-light {
+            background-color: #ffffff; /* White card background */
+            border: 1px solid #e0e0e0; /* Subtle border */
+        }
+        .text-card-dark {
+            color: #333333; /* Dark text for cards */
         }
     </style>
 </head>
 <body>
 
-    <header class="text-center py-8 relative">
+    <header class="text-center py-8 relative bg-white shadow-md">
         <img src="images/ChatGPT Image May 31, 2025, 12_08_18 PM.jpg" alt="Bicep Guys Fast Food Kebabs Logo" class="mx-auto header-logo object-contain mb-2">
-        <p class="mt-2 text-xl text-gray-300">Fuel Your Goals, Deliciously. Always Guilt-Free. No Seed Oils.</p>
+        <p class="mt-2 text-xl text-gray-700">Fuel Your Goals, Deliciously. Always Guilt-Free. No Seed Oils.</p>
         <nav class="mt-6">
-            <button id="nav-menu" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300 selected-nav-button">Menu</button>
-            <button id="nav-about" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300">About Us</button>
-            <button id="nav-cart" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300">Cart (<span id="cart-count">0</span>)</button>
+            <button id="nav-menu" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors duration-300 text-gray-800 selected-nav-button">Menu</button>
+            <button id="nav-about" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors duration-300 text-gray-800">About Us</button>
+            <button id="nav-cart" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors duration-300 text-gray-800">Cart (<span id="cart-count">0</span>)</button>
         </nav>
     </header>
 
@@ -83,67 +82,67 @@
 
         <section id="menu-section">
             <div id="menu-intro" class="text-center mb-12 pt-12">
-                <h2 class="font-bebas text-5xl tracking-wide mb-4">Build Your Power Meal</h2>
-                <p class="max-w-3xl mx-auto text-lg text-gray-400">
+                <h2 class="font-bebas text-5xl tracking-wide mb-4">Craft Your Power Entree</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600">
                     Welcome to America's first absolutely **Guilt-Free Binge Eating Destination!** Dive into our menu crafted for deliciousness, health, and balanced macros. Every kebab comes with your choice of rice and a nutrient-packed veggie bowl.
                 </p>
             </div>
 
-            <h3 class="font-bebas text-4xl tracking-wide text-yellow-400 text-center mb-8">Choose Your Kebab</h3>
+            <h3 class="font-bebas text-4xl tracking-wide text-yellow-600 text-center mb-8">Signature Kebabs</h3>
             <div id="filter-container" class="flex flex-wrap justify-center gap-3 mb-10">
             </div>
 
             <div id="kebab-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             </div>
 
-            <h3 class="font-bebas text-4xl tracking-wide text-yellow-400 text-center mt-20 mb-8">Power Combos</h3>
+            <h3 class="font-bebas text-4xl tracking-wide text-yellow-600 text-center mt-20 mb-8">Power Combos</h3>
             <div id="combo-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="combo-card bg-gray-800 bg-opacity-50 rounded-lg shadow-lg p-6 flex flex-col items-center">
+                <div class="combo-card bg-card-light rounded-lg shadow-lg p-6 flex flex-col items-center border">
                     <h4 class="font-bebas text-3xl gradient-text mb-4">The Mass Builder Combo</h4>
-                    <p class="text-gray-300 mb-4 text-center">Get *any* Kebab (your protein & size choice) + *any* Protein Shake for an unbeatable price!</p>
+                    <p class="text-gray-700 mb-4 text-center">Get *any* Kebab (your protein & size choice) + *any* Protein Shake for an unbeatable price!</p>
                     <div class="mb-4 w-full">
-                        <label class="font-bold text-gray-300 block mb-2">Select Your Kebab:</label>
-                        <select id="combo1-kebab-select" class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <label class="font-bold text-gray-700 block mb-2">Select Your Kebab:</label>
+                        <select id="combo1-kebab-select" class="w-full p-2 rounded-md bg-gray-100 border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-500">
                             </select>
                     </div>
                     <div class="mb-6 w-full">
-                        <label class="font-bold text-gray-300 block mb-2">Select Your Shake:</label>
-                        <select id="combo1-shake-select" class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <label class="font-bold text-gray-700 block mb-2">Select Your Shake:</label>
+                        <select id="combo1-shake-select" class="w-full p-2 rounded-md bg-gray-100 border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-500">
                             </select>
                     </div>
-                    <span id="combo1-price-display" class="font-bebas text-5xl text-white mb-4">$0.00</span>
+                    <span id="combo1-price-display" class="font-bebas text-5xl text-gray-800 mb-4">$0.00</span>
                     <button class="add-combo-to-cart-btn font-bebas text-xl py-2 px-6 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full" data-combo-type="shake">Add Combo to Cart</button>
                 </div>
 
-                <div class="combo-card bg-gray-800 bg-opacity-50 rounded-lg shadow-lg p-6 flex flex-col items-center">
+                <div class="combo-card bg-card-light rounded-lg shadow-lg p-6 flex flex-col items-center border">
                     <h4 class="font-bebas text-3xl gradient-text mb-4">The Shredder Fuel Combo</h4>
-                    <p class="text-gray-300 mb-4 text-center">Pair *any* Kebab (your protein & size choice) + *any* Greek Yogurt for maximum fuel!</p>
+                    <p class="text-gray-700 mb-4 text-center">Pair *any* Kebab (your protein & size choice) + *any* Greek Yogurt for maximum fuel!</p>
                     <div class="mb-4 w-full">
-                        <label class="font-bold text-gray-300 block mb-2">Select Your Kebab:</label>
-                        <select id="combo2-kebab-select" class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <label class="font-bold text-gray-700 block mb-2">Select Your Kebab:</label>
+                        <select id="combo2-kebab-select" class="w-full p-2 rounded-md bg-gray-100 border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-500">
                             </select>
                     </div>
                     <div class="mb-6 w-full">
-                        <label class="font-bold text-gray-300 block mb-2">Select Your Yogurt:</label>
-                        <select id="combo2-yogurt-select" class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <label class="font-bold text-gray-700 block mb-2">Select Your Yogurt:</label>
+                        <select id="combo2-yogurt-select" class="w-full p-2 rounded-md bg-gray-100 border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-500">
                             </select>
                     </div>
-                    <span id="combo2-price-display" class="font-bebas text-5xl text-white mb-4">$0.00</span>
+                    <span id="combo2-price-display" class="font-bebas text-5xl text-gray-800 mb-4">$0.00</span>
                     <button class="add-combo-to-cart-btn font-bebas text-xl py-2 px-6 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full" data-combo-type="yogurt">Add Combo to Cart</button>
                 </div>
             </div>
 
-            <h3 class="font-bebas text-4xl tracking-wide text-yellow-400 text-center mt-20 mb-8">Power-Up Sides & Hydration</h3>
+            <h3 class="font-bebas text-4xl tracking-wide text-yellow-600 text-center mt-20 mb-8">Power-Up Sides & Hydration</h3>
             <div id="sides-drinks-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div id="sauces-section-standalone">
+                <div id="sauces-section-standalone" class="bg-card-light rounded-lg shadow-lg p-6 border">
                     <h4 class="font-bebas text-3xl gradient-text mb-4 text-center">Guilt-Free Sauces</h4>
                     <div id="sauce-grid-sides" class="grid grid-cols-2 gap-4"></div>
                 </div>
-                <div id="shakes-section">
+                <div id="shakes-section" class="bg-card-light rounded-lg shadow-lg p-6 border">
                     <h4 class="font-bebas text-3xl gradient-text mb-4 text-center">Protein Shakes</h4>
                     <div id="shake-grid" class="grid grid-cols-1 gap-4"></div>
                 </div>
-                <div id="yogurts-sodas-section">
+                <div id="yogurts-sodas-section" class="bg-card-light rounded-lg shadow-lg p-6 border">
                     <h4 class="font-bebas text-3xl gradient-text mb-4 text-center">Yogurts & Zero Sodas</h4>
                     <div id="yogurt-grid" class="grid grid-cols-1 gap-4 mb-4"></div>
                     <div id="soda-grid" class="grid grid-cols-1 gap-4"></div>
@@ -153,7 +152,7 @@
 
         <section id="about-section" class="section-hidden py-12">
             <h2 class="font-bebas text-5xl tracking-wide text-center mb-10 gradient-text">Our Story: Fueling Your Ambition</h2>
-            <div class="max-w-4xl mx-auto text-lg text-gray-300 space-y-8">
+            <div class="max-w-4xl mx-auto text-lg text-gray-700 space-y-8">
                 <p>
                     At Bicep Guys, we saw a glaring gap in the fast-food world: delicious, genuinely healthy, and high-protein options that truly fit a fitness-focused lifestyle. We're here to redefine fast food, making it synonymous with **taste, health, and balanced nutrition.** Our vision is simple yet powerful: to become the ultimate go-to fuel station for anyone serious about their health, their gains, and their goals. We firmly believe that convenience should never come at the cost of your well-being or flavor.
                 </p>
@@ -168,10 +167,10 @@
 
         <section id="cart-section" class="section-hidden py-12">
             <h2 class="font-bebas text-5xl tracking-wide text-center mb-10 gradient-text">Your Power Cart</h2>
-            <div id="cart-items-container" class="max-w-3xl mx-auto bg-gray-800 bg-opacity-50 rounded-lg p-6 space-y-4">
-                <p id="empty-cart-message" class="text-center text-gray-400">Your cart is empty. Time to load up on some gains!</p>
+            <div id="cart-items-container" class="max-w-3xl mx-auto bg-card-light rounded-lg shadow-lg p-6 space-y-4 border">
+                <p id="empty-cart-message" class="text-center text-gray-600">Your cart is empty. Time to load up on some gains!</p>
             </div>
-            <div class="max-w-3xl mx-auto mt-6 p-4 bg-gray-800 bg-opacity-50 rounded-lg flex justify-between items-center font-bebas text-3xl">
+            <div class="max-w-3xl mx-auto mt-6 p-4 bg-card-light rounded-lg shadow-lg flex justify-between items-center font-bebas text-3xl border">
                 <span>Total:</span>
                 <span id="cart-total">$0.00</span>
             </div>
@@ -183,30 +182,30 @@
 
         <section id="checkout-section" class="section-hidden py-12">
             <h2 class="font-bebas text-5xl tracking-wide text-center mb-10 gradient-text">Checkout</h2>
-            <div id="checkout-summary" class="max-w-3xl mx-auto bg-gray-800 bg-opacity-50 rounded-lg p-6 space-y-4">
-                <h3 class="font-bebas text-3xl text-yellow-400 mb-4">Order Summary</h3>
-                <div id="checkout-items" class="space-y-2 text-gray-300">
+            <div id="checkout-summary" class="max-w-3xl mx-auto bg-card-light rounded-lg shadow-lg p-6 space-y-4 border">
+                <h3 class="font-bebas text-3xl text-yellow-600 mb-4">Order Summary</h3>
+                <div id="checkout-items" class="space-y-2 text-gray-700">
                 </div>
-                <div class="border-t border-gray-700 pt-4 mt-4 font-bebas text-3xl flex justify-between">
+                <div class="border-t border-gray-300 pt-4 mt-4 font-bebas text-3xl flex justify-between">
                     <span>Order Total:</span>
                     <span id="checkout-total-summary">$0.00</span>
                 </div>
             </div>
 
-            <div class="max-w-3xl mx-auto mt-8 bg-gray-800 bg-opacity-50 rounded-lg p-6">
-                <h3 class="font-bebas text-3xl text-yellow-400 mb-4">Customer Information</h3>
+            <div class="max-w-3xl mx-auto mt-8 bg-card-light rounded-lg shadow-lg p-6 border">
+                <h3 class="font-bebas text-3xl text-yellow-600 mb-4">Customer Information</h3>
                 <form id="checkout-form" class="space-y-4">
                     <div>
-                        <label for="customer-name" class="block text-gray-300 text-lg mb-2">Full Name</label>
-                        <input type="text" id="customer-name" class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="John Doe" required>
+                        <label for="customer-name" class="block text-gray-700 text-lg mb-2">Full Name</label>
+                        <input type="text" id="customer-name" class="w-full p-3 rounded-md bg-gray-100 border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="John Doe" required>
                     </div>
                     <div>
-                        <label for="customer-email" class="block text-gray-300 text-lg mb-2">Email</label>
-                        <input type="email" id="customer-email" class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="john.doe@example.com" required>
+                        <label for="customer-email" class="block text-gray-700 text-lg mb-2">Email</label>
+                        <input type="email" id="customer-email" class="w-full p-3 rounded-md bg-gray-100 border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="john.doe@example.com" required>
                     </div>
                     <div>
-                        <label for="customer-address" class="block text-gray-300 text-lg mb-2">Delivery Address</label>
-                        <textarea id="customer-address" rows="3" class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="123 Gym Rat Avenue, Apt 4B, Fitness City, FL 33101" required></textarea>
+                        <label for="customer-address" class="block text-gray-700 text-lg mb-2">Delivery Address</label>
+                        <textarea id="customer-address" rows="3" class="w-full p-3 rounded-md bg-gray-100 border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="123 Gym Rat Avenue, Apt 4B, Fitness City, FL 33101" required></textarea>
                     </div>
                     <div class="text-center mt-6">
                         <button type="submit" class="font-bebas text-2xl py-3 px-8 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300">Place Order</button>
@@ -217,8 +216,8 @@
 
     </main>
 
-    <footer class="text-center py-6 bg-black bg-opacity-30">
-        <p class="text-gray-400">&copy; 2025 Bicep Guys. All Rights Reserved.</p>
+    <footer class="text-center py-6 bg-white shadow-inner text-gray-600">
+        <p>&copy; 2025 Bicep Guys. All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -242,11 +241,11 @@
                 "Plant-Based": { "Mini Muscle": 10.99, "Gainz Grill": 14.99, "Bicep Beast": 18.99 }
             },
             sauces: [
-                { name: "Gym God Garlic Dip", desc: "Creamy garlic-herb dip, rich in flavor, light on guilt.", price: 1.00 },
-                { name: "Chipotle Powerhouse", desc: "Smoky chipotle with a tangy kick, perfect for adding a protein boost.", price: 1.00 },
-                { name: "Cool Down Cucumber-Dill", desc: "Refreshing cucumber and fresh dill, ideal for balancing spicy flavors.", price: 0.75 },
-                { name: "Sweet Gains Honey-Lime", desc: "A subtle blend of natural sweetness and zesty lime.", price: 0.75 },
-                { name: "Spicy Flex Sriracha Swirl", desc: "A creamy, spicy swirl for those who like extra heat.", price: 1.00 }
+                { id: 1, name: "Gym God Garlic Dip", desc: "Creamy garlic-herb dip, rich in flavor, light on guilt.", price: 1.00 },
+                { id: 2, name: "Chipotle Powerhouse", desc: "Smoky chipotle with a tangy kick, perfect for adding a protein boost.", price: 1.00 },
+                { id: 3, name: "Cool Down Cucumber-Dill", desc: "Refreshing cucumber and fresh dill, ideal for balancing spicy flavors.", price: 0.75 },
+                { id: 4, name: "Sweet Gains Honey-Lime", desc: "A subtle blend of natural sweetness and zesty lime.", price: 0.75 },
+                { id: 5, name: "Spicy Flex Sriracha Swirl", desc: "A creamy, spicy swirl for those who like extra heat.", price: 1.00 }
             ],
             proteinShakes: [
                 { id: 101, name: "Fairlife Core Power Vanilla", brand: "Fairlife", price: 4.99, desc: "Classic vanilla, high protein, lactose-free." },
@@ -312,7 +311,7 @@
 
             function renderFilters() {
                 filterContainer.innerHTML = allProteins.map(protein => `
-                    <button class="filter-btn font-bebas text-xl tracking-wider py-2 px-5 rounded-md border-2 border-gray-600 hover:bg-yellow-500 hover:text-black transition-colors duration-300 ${protein === 'All' ? 'selected-btn' : ''}" data-filter="${protein}">
+                    <button class="filter-btn font-bebas text-xl tracking-wider py-2 px-5 rounded-md border-2 border-gray-300 text-gray-700 hover:bg-yellow-500 hover:text-black transition-colors duration-300 ${protein === 'All' ? 'selected-btn' : ''}" data-filter="${protein}">
                         ${protein}
                     </button>
                 `).join('');
@@ -330,36 +329,36 @@
                     const initialPrice = menuData.prices[firstProtein]?.[firstSize]?.toFixed(2) || 'N/A';
 
                     const card = document.createElement('div');
-                    card.className = 'kebab-card bg-gray-800 bg-opacity-50 rounded-lg shadow-lg p-6 flex flex-col transition-all duration-300 group';
+                    card.className = 'kebab-card bg-card-light rounded-lg shadow-lg p-6 flex flex-col transition-all duration-300 group border';
                     card.dataset.kebabId = kebab.id;
 
                     card.innerHTML = `
-                        <div class="kebab-image-wrapper relative w-full h-40 bg-gray-700 rounded-md overflow-hidden">
+                        <div class="kebab-image-wrapper relative w-full h-40 bg-gray-100 rounded-md overflow-hidden">
                             <img src="${kebab.imageUrl}" alt="${kebab.name}" class="w-full h-full object-cover">
                         </div>
-                        <div class="flex-grow">
+                        <div class="flex-grow text-card-dark">
                             <h3 class="font-bebas text-3xl gradient-text">${kebab.name}</h3>
-                            <p class="text-gray-400 mb-4 h-12">${kebab.desc}</p>
+                            <p class="text-gray-600 mb-4 h-12">${kebab.desc}</p>
 
                             <div class="mb-4">
-                                <label class="font-bold text-gray-300">Protein:</label>
+                                <label class="font-bold text-gray-700">Protein:</label>
                                 <div class="flex flex-wrap gap-2 mt-2 protein-selector">
-                                    ${kebab.proteins.map((p, index) => `<button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors ${index === 0 ? 'selected-btn' : ''}" data-protein="${p}">${p}</button>`).join('')}
+                                    ${kebab.proteins.map((p, index) => `<button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-300 text-gray-700 hover:bg-yellow-400 transition-colors ${index === 0 ? 'selected-btn' : ''}" data-protein="${p}">${p}</button>`).join('')}
                                 </div>
                             </div>
 
                             <div class="mb-6">
-                                <label class="font-bold text-gray-300">Size:</label>
+                                <label class="font-bold text-gray-700">Size:</label>
                                 <div class="flex flex-wrap gap-2 mt-2 size-selector">
-                                    <button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors" data-size="Mini Muscle">30g Protein</button>
-                                    <button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors selected-btn" data-size="Gainz Grill">60g Protein</button>
-                                    <button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors" data-size="Bicep Beast">100g Protein</button>
+                                    <button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-300 text-gray-700 hover:bg-yellow-400 transition-colors" data-size="Mini Muscle">30g Protein</button>
+                                    <button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-300 text-gray-700 hover:bg-yellow-400 transition-colors selected-btn" data-size="Gainz Grill">60g Protein</button>
+                                    <button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-300 text-gray-700 hover:bg-yellow-400 transition-colors" data-size="Bicep Beast">100g Protein</button>
                                 </div>
                             </div>
                         </div>
 
                         <div class="text-center mt-auto">
-                            <span class="price-display font-bebas text-5xl text-white">$${initialPrice}</span>
+                            <span class="price-display font-bebas text-5xl text-gray-800">$${initialPrice}</span>
                             <button class="add-to-cart-btn font-bebas text-xl py-2 px-6 mt-4 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full">Add to Cart</button>
                         </div>
                     `;
@@ -368,22 +367,19 @@
             }
 
             function renderCombos() {
-                // Populate kebab selection for combos
                 const kebabOptionsHtml = menuData.kebabs.map(k => {
                     const defaultProtein = k.proteins[0];
                     const defaultSize = "Gainz Grill";
                     const price = menuData.prices[defaultProtein]?.[defaultSize];
-                    return `<option value="${k.id}-${defaultProtein}-${defaultSize}" data-kebab-id="${k.id}" data-protein="${defaultProtein}" data-size="${defaultSize}" data-price="${price}">${k.name} (${defaultProtein}, ${defaultSize}) - $${price.toFixed(2)}</option>`;
+                    return `<option value="${k.id}-${defaultProtein}-${defaultSize}" data-kebab-id="${k.id}" data-protein="${defaultProtein}" data-size="${defaultSize}" data-price="${price}">${k.name} (${defaultProtein}, ${defaultSize}) - $${price ? price.toFixed(2) : 'N/A'}</option>`;
                 }).join('');
                 combo1KebabSelect.innerHTML = kebabOptionsHtml;
                 combo2KebabSelect.innerHTML = kebabOptionsHtml;
 
-                // Populate shake selection for combo 1
                 combo1ShakeSelect.innerHTML = menuData.proteinShakes.map(shake => `
                     <option value="${shake.id}" data-price="${shake.price}">${shake.name} - $${shake.price.toFixed(2)}</option>
                 `).join('');
 
-                // Populate yogurt selection for combo 2
                 combo2YogurtSelect.innerHTML = menuData.greekYogurts.map(yogurt => `
                     <option value="${yogurt.id}" data-price="${yogurt.price}">${yogurt.name} - $${yogurt.price.toFixed(2)}</option>
                 `).join('');
@@ -401,73 +397,53 @@
                 const discount = menuData.comboDiscounts[comboType] || 0;
 
                 let comboPrice = (kebabPrice + itemPrice - discount);
-                if (isNaN(comboPrice)) { // Handles cases where prices might be missing
+                if (isNaN(comboPrice)) {
                     priceDisplay.textContent = 'N/A';
                 } else {
                     priceDisplay.textContent = `$${comboPrice.toFixed(2)}`;
                 }
             }
-
-            // Event listeners for combo price updates
-            combo1KebabSelect.addEventListener('change', () => updateComboPrice(combo1KebabSelect, combo1ShakeSelect, combo1PriceDisplay, 'shake'));
-            combo1ShakeSelect.addEventListener('change', () => updateComboPrice(combo1KebabSelect, combo1ShakeSelect, combo1PriceDisplay, 'shake'));
-            combo2KebabSelect.addEventListener('change', () => updateComboPrice(combo2KebabSelect, combo2YogurtSelect, combo2PriceDisplay, 'yogurt'));
-            combo2YogurtSelect.addEventListener('change', () => updateComboPrice(combo2KebabSelect, combo2YogurtSelect, combo2PriceDisplay, 'yogurt'));
-
-
+            
             function renderSidesAndDrinks() {
                 // Sauces
                 sauceGridSides.innerHTML = menuData.sauces.map(sauce => `
-                    <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 text-center flex flex-col justify-between items-center">
-                        <h4 class="font-bebas text-2xl text-yellow-400">${sauce.name}</h4>
-                        <p class="text-gray-400 text-sm mb-2 h-12">${sauce.desc}</p>
-                        <p class="font-bold text-lg">$${sauce.price.toFixed(2)}</p>
-                        <button class="add-side-to-cart-btn font-bebas text-lg py-1 px-4 mt-2 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full" data-item-type="sauce" data-item-id="${sauce.name}" data-item-price="${sauce.price}">Add</button>
+                    <div class="bg-gray-100 rounded-lg p-4 text-center flex flex-col justify-between items-center border border-gray-200">
+                        <h4 class="font-bebas text-2xl text-yellow-600">${sauce.name}</h4>
+                        <p class="text-gray-700 text-sm mb-2 h-12">${sauce.desc}</p>
+                        <p class="font-bold text-lg text-gray-800">$${sauce.price.toFixed(2)}</p>
+                        <button class="add-side-to-cart-btn font-bebas text-lg py-1 px-4 mt-2 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full" data-item-type="sauce" data-item-id="${sauce.id}" data-item-name="${sauce.name}" data-item-price="${sauce.price}">Add</button>
                     </div>
                 `).join('');
 
                 // Protein Shakes
                 shakeGrid.innerHTML = menuData.proteinShakes.map(shake => `
-                    <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 flex flex-col justify-between items-center">
-                        <h4 class="font-bebas text-2xl text-yellow-400">${shake.name}</h4>
-                        <p class="text-gray-400 text-sm mb-2">${shake.brand} - ${shake.desc}</p>
-                        <p class="font-bold text-lg">$${shake.price.toFixed(2)}</p>
-                        <button class="add-side-to-cart-btn font-bebas text-lg py-1 px-4 mt-2 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full" data-item-type="shake" data-item-id="${shake.name}" data-item-price="${shake.price}">Add</button>
+                    <div class="bg-gray-100 rounded-lg p-4 flex flex-col justify-between items-center border border-gray-200">
+                        <h4 class="font-bebas text-2xl text-yellow-600">${shake.name}</h4>
+                        <p class="text-gray-700 text-sm mb-2">${shake.brand} - ${shake.desc}</p>
+                        <p class="font-bold text-lg text-gray-800">$${shake.price.toFixed(2)}</p>
+                        <button class="add-side-to-cart-btn font-bebas text-lg py-1 px-4 mt-2 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full" data-item-type="shake" data-item-id="${shake.id}" data-item-name="${shake.name}" data-item-price="${shake.price}">Add</button>
                     </div>
                 `).join('');
 
                 // Greek Yogurts
                 yogurtGrid.innerHTML = menuData.greekYogurts.map(yogurt => `
-                    <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 flex flex-col justify-between items-center">
-                        <h4 class="font-bebas text-2xl text-yellow-400">${yogurt.name}</h4>
-                        <p class="text-gray-400 text-sm mb-2">${yogurt.brand} - ${yogurt.desc}</p>
-                        <p class="font-bold text-lg">$${yogurt.price.toFixed(2)}</p>
-                        <button class="add-side-to-cart-btn font-bebas text-lg py-1 px-4 mt-2 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full" data-item-type="yogurt" data-item-id="${yogurt.name}" data-item-price="${yogurt.price}">Add</button>
+                    <div class="bg-gray-100 rounded-lg p-4 flex flex-col justify-between items-center border border-gray-200">
+                        <h4 class="font-bebas text-2xl text-yellow-600">${yogurt.name}</h4>
+                        <p class="text-gray-700 text-sm mb-2">${yogurt.brand} - ${yogurt.desc}</p>
+                        <p class="font-bold text-lg text-gray-800">$${yogurt.price.toFixed(2)}</p>
+                        <button class="add-side-to-cart-btn font-bebas text-lg py-1 px-4 mt-2 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full" data-item-type="yogurt" data-item-id="${yogurt.id}" data-item-name="${yogurt.name}" data-item-price="${yogurt.price}">Add</button>
                     </div>
                 `).join('');
 
                 // Zero Sodas
                 sodaGrid.innerHTML = menuData.zeroSodas.map(soda => `
-                    <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 flex flex-col justify-between items-center">
-                        <h4 class="font-bebas text-2xl text-yellow-400">${soda.name}</h4>
-                        <p class="text-gray-400 text-sm mb-2">${soda.desc}</p>
-                        <p class="font-bold text-lg">$${soda.price.toFixed(2)}</p>
-                        <button class="add-side-to-cart-btn font-bebas text-lg py-1 px-4 mt-2 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full" data-item-type="soda" data-item-id="${soda.name}" data-item-price="${soda.price}">Add</button>
+                    <div class="bg-gray-100 rounded-lg p-4 flex flex-col justify-between items-center border border-gray-200">
+                        <h4 class="font-bebas text-2xl text-yellow-600">${soda.name}</h4>
+                        <p class="text-gray-700 text-sm mb-2">${soda.desc}</p>
+                        <p class="font-bold text-lg text-gray-800">$${soda.price.toFixed(2)}</p>
+                        <button class="add-side-to-cart-btn font-bebas text-lg py-1 px-4 mt-2 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full" data-item-type="soda" data-item-id="${soda.id}" data-item-name="${soda.name}" data-item-price="${soda.price}">Add</button>
                     </div>
                 `).join('');
-            }
-
-            function updatePrice(card) {
-                const selectedProtein = card.querySelector('.protein-selector .selected-btn').dataset.protein;
-                const selectedSize = card.querySelector('.size-selector .selected-btn').dataset.size;
-                const priceDisplay = card.querySelector('.price-display');
-
-                const price = menuData.prices[selectedProtein]?.[selectedSize];
-                if (price !== undefined) {
-                    priceDisplay.textContent = `$${price.toFixed(2)}`;
-                } else {
-                    priceDisplay.textContent = 'N/A';
-                }
             }
 
             function updateCartCount() {
@@ -485,11 +461,11 @@
                     emptyCartMessage.style.display = 'none';
                     cart.forEach((item, index) => {
                         const itemElement = document.createElement('div');
-                        itemElement.className = 'flex justify-between items-center bg-gray-700 p-4 rounded-md';
+                        itemElement.className = 'flex justify-between items-center bg-gray-200 p-4 rounded-md text-gray-800';
                         itemElement.innerHTML = `
                             <div>
-                                <h4 class="font-bold text-lg text-yellow-400">${item.quantity}x ${item.name}</h4>
-                                <p class="text-gray-400 text-sm">${item.details || ''}</p>
+                                <h4 class="font-bold text-lg text-yellow-600">${item.quantity}x ${item.name}</h4>
+                                <p class="text-gray-700 text-sm">${item.details || ''}</p>
                             </div>
                             <div class="flex items-center gap-4">
                                 <span class="font-bold text-xl">$${(item.price * item.quantity).toFixed(2)}</span>
@@ -509,7 +485,7 @@
                     cartItem.protein === item.protein && 
                     cartItem.size === item.size &&
                     cartItem.type === item.type &&
-                    cartItem.comboId === item.comboId
+                    cartItem.comboId === item.comboId // Check comboId for uniqueness
                 );
 
                 if (existingItemIndex > -1) {
@@ -531,11 +507,11 @@
                 checkoutItemsDiv.innerHTML = '';
                 let total = 0;
                 if (cart.length === 0) {
-                    checkoutItemsDiv.innerHTML = '<p class="text-center text-gray-400">Your cart is empty.</p>';
+                    checkoutItemsDiv.innerHTML = '<p class="text-center text-gray-600">Your cart is empty.</p>';
                 } else {
                     cart.forEach(item => {
                         const itemElement = document.createElement('p');
-                        itemElement.className = 'flex justify-between';
+                        itemElement.className = 'flex justify-between text-gray-700';
                         const details = item.details ? ` (${item.details})` : '';
                         itemElement.innerHTML = `<span>${item.quantity}x ${item.name}${details}</span> <span>$${(item.price * item.quantity).toFixed(2)}</span>`;
                         checkoutItemsDiv.appendChild(itemElement);
@@ -607,40 +583,41 @@
             });
 
             // Combo Add to Cart
-            const comboCards = document.querySelectorAll('.add-combo-to-cart-btn');
-            comboCards.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const comboType = btn.dataset.comboType;
-                    let kebabOption, itemOption;
-                    let comboName, comboDetails;
-                    let comboId;
+            combo1AddBtn.addEventListener('click', () => {
+                const kebabOption = combo1KebabSelect.options[combo1KebabSelect.selectedIndex];
+                const shakeOption = combo1ShakeSelect.options[combo1ShakeSelect.selectedIndex];
+                const finalPrice = parseFloat(combo1PriceDisplay.textContent.replace('$', ''));
 
-                    if (comboType === 'shake') {
-                        kebabOption = combo1KebabSelect.options[combo1KebabSelect.selectedIndex];
-                        itemOption = combo1ShakeSelect.options[combo1ShakeSelect.selectedIndex];
-                        comboName = "The Mass Builder Combo";
-                        comboDetails = `${kebabOption.textContent} + ${itemOption.textContent}`;
-                        comboId = `combo-shake-${kebabOption.dataset.kebabId}-${itemOption.value}`;
-                    } else if (comboType === 'yogurt') {
-                        kebabOption = combo2KebabSelect.options[combo2KebabSelect.selectedIndex];
-                        itemOption = combo2YogurtSelect.options[combo2YogurtSelect.selectedIndex];
-                        comboName = "The Shredder Fuel Combo";
-                        comboDetails = `${kebabOption.textContent} + ${itemOption.textContent}`;
-                        comboId = `combo-yogurt-${kebabOption.dataset.kebabId}-${itemOption.value}`;
-                    }
+                if (isNaN(finalPrice) || finalPrice <= 0) {
+                    alert("Please select a valid combo.");
+                    return;
+                }
 
-                    const kebabPrice = parseFloat(kebabOption.dataset.price);
-                    const itemPrice = parseFloat(itemOption.dataset.price);
-                    const discount = menuData.comboDiscounts[comboType] || 0;
-                    const finalPrice = kebabPrice + itemPrice - discount;
+                addToCart({
+                    id: `combo1-${kebabOption.dataset.kebabId}-${shakeOption.value}`,
+                    name: "The Mass Builder Combo",
+                    price: finalPrice,
+                    type: 'combo',
+                    details: `${kebabOption.textContent.split(' - ')[0]} + ${shakeOption.textContent.split(' - ')[0]}`
+                });
+            });
 
-                    addToCart({
-                        id: comboId,
-                        name: comboName,
-                        price: finalPrice,
-                        type: 'combo',
-                        details: comboDetails
-                    });
+            combo2AddBtn.addEventListener('click', () => {
+                const kebabOption = combo2KebabSelect.options[combo2KebabSelect.selectedIndex];
+                const yogurtOption = combo2YogurtSelect.options[combo2YogurtSelect.selectedIndex];
+                const finalPrice = parseFloat(combo2PriceDisplay.textContent.replace('$', ''));
+
+                 if (isNaN(finalPrice) || finalPrice <= 0) {
+                    alert("Please select a valid combo.");
+                    return;
+                }
+
+                addToCart({
+                    id: `combo2-${kebabOption.dataset.kebabId}-${yogurtOption.value}`,
+                    name: "The Shredder Fuel Combo",
+                    price: finalPrice,
+                    type: 'combo',
+                    details: `${kebabOption.textContent.split(' - ')[0]} + ${yogurtOption.textContent.split(' - ')[0]}`
                 });
             });
 
@@ -649,15 +626,16 @@
                 const target = e.target;
                 if (target.classList.contains('add-side-to-cart-btn')) {
                     const itemType = target.dataset.itemType;
-                    const itemId = target.dataset.itemId; // Name is used as ID for sides
+                    const itemName = target.dataset.itemName;
+                    const itemId = target.dataset.itemId;
                     const itemPrice = parseFloat(target.dataset.itemPrice);
 
                     addToCart({
                         id: `${itemType}-${itemId}`,
-                        name: itemId,
+                        name: itemName,
                         price: itemPrice,
                         type: itemType,
-                        details: itemType // Can be expanded later for more details
+                        details: itemType === 'soda' ? 'Zero Sugar' : (itemType === 'sauce' ? 'Sauce' : 'Side')
                     });
                 }
             });
@@ -711,8 +689,8 @@
             // Initial render and display
             renderFilters();
             renderKebabs();
-            renderCombos(); // Render combos on load
-            renderSidesAndDrinks(); // Render sides and drinks on load
+            renderCombos();
+            renderSidesAndDrinks();
             updateCartCount();
             showSection('menu');
         });
