@@ -27,35 +27,57 @@
             color: #1a1a1a !important;
             border-color: #FDB813 !important;
         }
+        .section-hidden {
+            display: none;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <header class="text-center py-12">
+    <header class="text-center py-8 relative">
         <h1 class="font-bebas text-7xl md:text-8xl tracking-wider gradient-text">BICEP GUYS</h1>
         <p class="mt-2 text-xl text-gray-300">Fuel Your Goals, Deliciously. Always Guilt-Free. No Seed Oils.</p>
+        <nav class="mt-6">
+            <button id="nav-menu" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300 text-yellow-400 selected-nav-button">Menu</button>
+            <button id="nav-about" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300">About Us</button>
+        </nav>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
 
-        <section id="menu-intro" class="text-center mb-12">
-            <h2 class="font-bebas text-5xl tracking-wide mb-4">Build Your Power Meal</h2>
-            <p class="max-w-3xl mx-auto text-lg text-gray-400">
-                Welcome to the ultimate fuel station. Our menu is designed for performance and taste. Select a kebab, choose your protein, pick your size, and add one of our guilt-free sauces to complete your perfect high-protein meal. Every kebab comes with a side of rice and a nutrient-packed veggie bowl.
-            </p>
-        </section>
+        <section id="menu-section" class="">
+            <div id="menu-intro" class="text-center mb-12 pt-12">
+                <h2 class="font-bebas text-5xl tracking-wide mb-4">Build Your Power Meal</h2>
+                <p class="max-w-3xl mx-auto text-lg text-gray-400">
+                    Welcome to the ultimate fuel station. Our menu is designed for performance and taste. Select a kebab, choose your protein, pick your size, and add one of our guilt-free sauces to complete your perfect high-protein meal. Every kebab comes with a side of rice and a nutrient-packed veggie bowl.
+                </p>
+            </div>
 
-        <section id="kebab-menu">
             <div id="filter-container" class="flex flex-wrap justify-center gap-3 mb-10">
             </div>
 
             <div id="kebab-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             </div>
+
+            <div id="sauces-section" class="mt-20">
+                <h2 class="font-bebas text-5xl tracking-wide text-center mb-10">Guilt-Free Power Sauces</h2>
+                <div id="sauce-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
+                </div>
+            </div>
         </section>
 
-        <section id="sauces-section" class="mt-20">
-            <h2 class="font-bebas text-5xl tracking-wide text-center mb-10">Guilt-Free Power Sauces</h2>
-            <div id="sauce-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
+        <section id="about-section" class="section-hidden py-12">
+            <h2 class="font-bebas text-5xl tracking-wide text-center mb-10 gradient-text">Our Story: Fueling Your Ambition</h2>
+            <div class="max-w-4xl mx-auto text-lg text-gray-300 space-y-8">
+                <p>
+                    At Bicep Guys, we saw a glaring gap in the fast-food world: truly healthy, delicious, and high-protein options that genuinely fit a fitness-focused lifestyle. We're here to change that narrative. Our vision is simple yet powerful: to become the go-to fuel station for anyone serious about their health, their gains, and their goals. We believe that convenience shouldn't come at the cost of nutrition or flavor.
+                </p>
+                <p>
+                    Every meal at Bicep Guys is crafted with purpose. We prioritize lean, high-quality proteins, sourced responsibly, and paired with vibrant, fresh vegetables that burst with natural goodness. What you won't find here are seed oils or questionable additives – our commitment is to clean, wholesome ingredients. Our kebabs are designed to be juicy, incredibly flavorful, and transparently macro-friendly, so you can hit your protein targets guilt-free, every single time.
+                </p>
+                <p>
+                    Whether you're a seasoned gym enthusiast meticulously tracking your macros, a busy professional striving for clean eating amidst a hectic schedule, or just someone looking for genuinely healthy fast food that tastes amazing, Bicep Guys is built for you. We're more than just a restaurant; we're a community. Join us and discover how easy and delicious hitting your protein goals can truly be. Your journey to a stronger, healthier you starts here.
+                </p>
             </div>
         </section>
 
@@ -75,7 +97,7 @@
                 { id: 5, name: "Zesty Zenith", desc: "Zesty Herb & Citrus: Parsley, cilantro, orange, lemon, chili flakes.", proteins: ["Chicken", "Plant-Based"] },
                 { id: 6, name: "Island Inferno", desc: "Spicy Jamaican Jerk: Allspice, thyme, Scotch bonnet, cinnamon.", proteins: ["Chicken", "Steak"] },
                 { id: 7, name: "Golden Gains", desc: "Honey Mustard Crunch: Honey, Dijon, cracked pepper, toasted seeds.", proteins: ["Chicken", "Plant-Based"] },
-                { id: 8, name: "Garlic Gauntlet", desc: "Garlic Parmesan: Roasted garlic, parmesan, Italian herbs.", proteins: ["Chicken", "Steak", "Plant-Based"] },
+                { id: 8, name: "Garlic Gauntlet", desc: "Roasted garlic, parmesan, Italian herbs.", proteins: ["Chicken", "Steak", "Plant-Based"] },
                 { id: 9, name: "Teriyaki Triumph", desc: "Teriyaki Ginger: Soy, ginger, pineapple, green onion.", proteins: ["Chicken", "Steak", "Plant-Based"] },
                 { id: 10, name: "Buffalo Beast", desc: "Buffalo Sriracha: Hot sauce, sriracha, celery seed, blue cheese drizzle.", proteins: ["Chicken"] }
             ],
@@ -86,15 +108,20 @@
                 "Plant-Based": { "Mini Muscle": 10.99, "Gainz Grill": 14.99, "Bicep Beast": 18.99 }
             },
             sauces: [
-                { name: "Gym God Garlic Dip", desc: "Creamy garlic-herb dip", price: 1.00 },
-                { name: "Chipotle Powerhouse", desc: "Smoky chipotle kick", price: 1.00 },
-                { name: "Cool Down Cucumber-Dill", desc: "Refreshing and light", price: 0.75 },
-                { name: "Sweet Gains Honey-Lime", desc: "Subtle sweet & zesty", price: 0.75 },
-                { name: "Spicy Flex Sriracha Swirl", desc: "Creamy with extra heat", price: 1.00 }
+                { name: "Gym God Garlic Dip", desc: "Creamy garlic-herb dip, rich in flavor, light on guilt.", price: 1.00 },
+                { name: "Chipotle Powerhouse", desc: "Smoky chipotle with a tangy kick, perfect for adding a protein boost.", price: 1.00 },
+                { name: "Cool Down Cucumber-Dill", desc: "Refreshing cucumber and fresh dill, ideal for balancing spicy flavors.", price: 0.75 },
+                { name: "Sweet Gains Honey-Lime", desc: "A subtle blend of natural sweetness and zesty lime.", price: 0.75 },
+                { name: "Spicy Flex Sriracha Swirl", desc: "A creamy, spicy swirl for those who like extra heat.", price: 1.00 }
             ]
         };
 
         document.addEventListener('DOMContentLoaded', () => {
+            const menuSection = document.getElementById('menu-section');
+            const aboutSection = document.getElementById('about-section');
+            const navMenuBtn = document.getElementById('nav-menu');
+            const navAboutBtn = document.getElementById('nav-about');
+
             const kebabGrid = document.getElementById('kebab-grid');
             const sauceGrid = document.getElementById('sauce-grid');
             const filterContainer = document.getElementById('filter-container');
@@ -118,7 +145,7 @@
                 filteredKebabs.forEach(kebab => {
                     const firstProtein = kebab.proteins[0];
                     const firstSize = "Gainz Grill";
-                    const initialPrice = menuData.prices[firstProtein][firstSize].toFixed(2);
+                    const initialPrice = menuData.prices[firstProtein]?.[firstSize]?.toFixed(2) || 'N/A';
 
                     const card = document.createElement('div');
                     card.className = 'kebab-card bg-gray-800 bg-opacity-50 rounded-lg shadow-lg p-6 flex flex-col transition-all duration-300';
@@ -158,7 +185,7 @@
                 sauceGrid.innerHTML = menuData.sauces.map(sauce => `
                     <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 text-center">
                         <h4 class="font-bebas text-2xl text-yellow-400">${sauce.name}</h4>
-                        <p class="text-gray-400 text-sm mb-2">${sauce.desc}</p>
+                        <p class="text-gray-400 text-sm mb-2 h-12">${sauce.desc}</p>
                         <p class="font-bold text-lg">$${sauce.price.toFixed(2)}</p>
                     </div>
                 `).join('');
@@ -210,9 +237,29 @@
                 });
             });
 
+            function showSection(sectionId) {
+                menuSection.classList.add('section-hidden');
+                aboutSection.classList.add('section-hidden');
+
+                if (sectionId === 'menu') {
+                    menuSection.classList.remove('section-hidden');
+                    navMenuBtn.classList.add('selected-nav-button');
+                    navAboutBtn.classList.remove('selected-nav-button');
+                } else if (sectionId === 'about') {
+                    aboutSection.classList.remove('section-hidden');
+                    navAboutBtn.classList.add('selected-nav-button');
+                    navMenuBtn.classList.remove('selected-nav-button');
+                }
+            }
+
+            navMenuBtn.addEventListener('click', () => showSection('menu'));
+            navAboutBtn.addEventListener('click', () => showSection('about'));
+
+            // Initial render and display of menu section
             renderFilters();
             renderKebabs();
             renderSauces();
+            showSection('menu'); // Ensure menu is shown by default
         });
     </script>
 </body>
