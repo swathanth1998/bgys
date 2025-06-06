@@ -1,254 +1,219 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2022.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #4689cc; -webkit-text-stroke: #4689cc}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #8cd3fe; -webkit-text-stroke: #8cd3fe}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #c27e65; -webkit-text-stroke: #c27e65}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #cacaca; -webkit-text-stroke: #cacaca}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #cacaca; -webkit-text-stroke: #cacaca; min-height: 16.0px}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #71c083; -webkit-text-stroke: #71c083}
-    span.s1 {font-kerning: none; background-color: #171818}
-    span.s2 {font-kerning: none; color: #8cd3fe; background-color: #171818; -webkit-text-stroke: 0px #8cd3fe}
-    span.s3 {font-kerning: none; color: #6d6d6d; background-color: #171818; -webkit-text-stroke: 0px #6d6d6d}
-    span.s4 {font-kerning: none; color: #cacaca; background-color: #171818; -webkit-text-stroke: 0px #cacaca}
-    span.s5 {font-kerning: none; color: #c27e65; background-color: #171818; -webkit-text-stroke: 0px #c27e65}
-    span.s6 {font-kerning: none; color: #4689cc; background-color: #171818; -webkit-text-stroke: 0px #4689cc}
-    span.s7 {font-kerning: none; color: #d4d4d4; background-color: #171818; -webkit-text-stroke: 0px #d4d4d4}
-    span.s8 {font-kerning: none; color: #71c083; background-color: #171818; -webkit-text-stroke: 0px #71c083}
-    span.s9 {font-kerning: none; color: #a7c598; background-color: #171818; -webkit-text-stroke: 0px #a7c598}
-    span.s10 {font-kerning: none; color: #b76ff7; background-color: #171818; -webkit-text-stroke: 0px #b76ff7}
-    span.s11 {font-kerning: none}
-    span.s12 {font-kerning: none; color: #f67c30; background-color: #171818; -webkit-text-stroke: 0px #f67c30}
-    span.s13 {font-kerning: none; color: #36c0a0; background-color: #171818; -webkit-text-stroke: 0px #36c0a0}
-    span.s14 {font-kerning: none; color: #ee2e38; background-color: #171818; -webkit-text-stroke: 0px #ee2e38}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bicep Guys - Interactive Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
+        .font-bebas {
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #FDB813, #FFAA00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .selected-btn {
+            background-color: #FDB813 !important;
+            color: #1a1a1a !important;
+            border-color: #FDB813 !important;
+        }
+    </style>
 </head>
-<body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE</span><span class="s2"> html</span><span class="s1">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;</span><span class="s1">html</span><span class="s4"> </span><span class="s2">lang</span><span class="s3">=</span><span class="s5">"en"</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s1">charset</span><span class="s3">=</span><span class="s5">"UTF-8"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s2">name</span><span class="s3">=</span><span class="s1">"viewport"</span><span class="s4"> </span><span class="s2">content</span><span class="s3">=</span><span class="s1">"width=device-width, initial-scale=1.0"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">title</span><span class="s3">&gt;</span><span class="s1">Bicep Guys - Interactive Menu</span><span class="s3">&lt;/</span><span class="s6">title</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://cdn.tailwindcss.com"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"preconnect"</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://fonts.googleapis.com"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"preconnect"</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://fonts.gstatic.com"</span><span class="s4"> </span><span class="s2">crossorigin</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Roboto:wght@400;700&amp;display=swap"</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"stylesheet"</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">body</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Roboto'</span><span class="s7">,</span><span class="s1"> </span><span class="s5">sans-serif</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background-color:</span><span class="s1"> #1a1a1a</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">color:</span><span class="s1"> #f1f1f1</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.font-bebas</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Bebas Neue'</span><span class="s7">,</span><span class="s1"> </span><span class="s5">sans-serif</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.gradient-text</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> </span><span class="s5">linear-gradient(</span><span class="s9">90deg</span><span class="s7">,</span><span class="s1"> #FDB813</span><span class="s7">,</span><span class="s1"> #FFAA00</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">-webkit-background-clip:</span><span class="s4"> </span><span class="s5">text</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">-webkit-text-fill-color:</span><span class="s4"> </span><span class="s5">transparent</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.selected-btn</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background-color:</span><span class="s1"> #FDB813 </span><span class="s10">!important</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">color:</span><span class="s1"> #1a1a1a </span><span class="s10">!important</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border-color:</span><span class="s1"> #FDB813 </span><span class="s10">!important</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s3">&lt;</span><span class="s6">body</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"antialiased"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">header</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-center py-12"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">h1</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"font-bebas text-7xl md:text-8xl tracking-wider gradient-text"</span><span class="s3">&gt;</span><span class="s4">BICEP GUYS</span><span class="s3">&lt;/</span><span class="s6">h1</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"mt-2 text-xl text-gray-300"</span><span class="s3">&gt;</span><span class="s1">Fuel Your Goals, Deliciously. Always Guilt-Free. No Seed Oils.</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">header</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">main</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">section</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"menu-intro"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-center mb-12"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">h2</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"font-bebas text-5xl tracking-wide mb-4"</span><span class="s3">&gt;</span><span class="s4">Build Your Power Meal</span><span class="s3">&lt;/</span><span class="s6">h2</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"max-w-3xl mx-auto text-lg text-gray-400"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>Welcome to the ultimate fuel station. Our menu is designed for performance and taste. Select a kebab, choose your protein, pick your size, and add one of our guilt-free sauces to complete your perfect high-protein meal. Every kebab comes with a side of rice and a nutrient-packed veggie bowl.</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">section</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">section</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"kebab-menu"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"filter-container"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex flex-wrap justify-center gap-3 mb-10"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"kebab-grid"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">section</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">section</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"sauces-section"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"mt-20"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">h2</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"font-bebas text-5xl tracking-wide text-center mb-10"</span><span class="s3">&gt;</span><span class="s4">Guilt-Free Power Sauces</span><span class="s3">&lt;/</span><span class="s6">h2</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"sauce-grid"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-5xl mx-auto"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">section</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s6">main</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">footer</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-center py-6 bg-black bg-opacity-30"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-gray-400"</span><span class="s3">&gt;</span><span class="s1">&amp;copy; 2025 Bicep Guys. All Rights Reserved.</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">footer</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s10">const</span><span class="s1"> menuData </span><span class="s7">=</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>kebabs</span><span class="s7">:</span><span class="s1"> </span><span class="s7">[</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s12">1</span><span class="s7">,</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Olympian Original"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Classic Mediterranean: Garlic, oregano, lemon, olive oil marinade."</span><span class="s7">,</span><span class="s4"> proteins</span><span class="s7">:</span><span class="s4"> </span><span class="s7">[</span><span class="s1">"Chicken"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Steak"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Lamb"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Plant-Based"</span><span class="s7">]</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s12">2</span><span class="s7">,</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Smoky Shredder"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Smoky Chipotle-Lime: Chipotle peppers, lime zest, smoked paprika."</span><span class="s7">,</span><span class="s4"> proteins</span><span class="s7">:</span><span class="s4"> </span><span class="s7">[</span><span class="s1">"Chicken"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Steak"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Plant-Based"</span><span class="s7">]</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s12">3</span><span class="s7">,</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Tandoori Titan"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Tandoori Power: Yogurt, turmeric, ginger, garam masala."</span><span class="s7">,</span><span class="s4"> proteins</span><span class="s7">:</span><span class="s4"> </span><span class="s7">[</span><span class="s1">"Chicken"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Lamb"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Plant-Based"</span><span class="s7">]</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s12">4</span><span class="s7">,</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Seoul Surge"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Korean BBQ Fire: Gochujang, sesame, scallion, honey glaze."</span><span class="s7">,</span><span class="s4"> proteins</span><span class="s7">:</span><span class="s4"> </span><span class="s7">[</span><span class="s1">"Chicken"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Steak"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Plant-Based"</span><span class="s7">]</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s12">5</span><span class="s7">,</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Zesty Zenith"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Zesty Herb &amp; Citrus: Parsley, cilantro, orange, lemon, chili flakes."</span><span class="s7">,</span><span class="s4"> proteins</span><span class="s7">:</span><span class="s4"> </span><span class="s7">[</span><span class="s1">"Chicken"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Plant-Based"</span><span class="s7">]</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s12">6</span><span class="s7">,</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Island Inferno"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Spicy Jamaican Jerk: Allspice, thyme, Scotch bonnet, cinnamon."</span><span class="s7">,</span><span class="s4"> proteins</span><span class="s7">:</span><span class="s4"> </span><span class="s7">[</span><span class="s1">"Chicken"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Steak"</span><span class="s7">]</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s12">7</span><span class="s7">,</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Golden Gains"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Honey Mustard Crunch: Honey, Dijon, cracked pepper, toasted seeds."</span><span class="s7">,</span><span class="s4"> proteins</span><span class="s7">:</span><span class="s4"> </span><span class="s7">[</span><span class="s1">"Chicken"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Plant-Based"</span><span class="s7">]</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s12">8</span><span class="s7">,</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Garlic Gauntlet"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Garlic Parmesan: Roasted garlic, parmesan, Italian herbs."</span><span class="s7">,</span><span class="s4"> proteins</span><span class="s7">:</span><span class="s4"> </span><span class="s7">[</span><span class="s1">"Chicken"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Steak"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Plant-Based"</span><span class="s7">]</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s12">9</span><span class="s7">,</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Teriyaki Triumph"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Teriyaki Ginger: Soy, ginger, pineapple, green onion."</span><span class="s7">,</span><span class="s4"> proteins</span><span class="s7">:</span><span class="s4"> </span><span class="s7">[</span><span class="s1">"Chicken"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Steak"</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Plant-Based"</span><span class="s7">]</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s12">10</span><span class="s7">,</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Buffalo Beast"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Buffalo Sriracha: Hot sauce, sriracha, celery seed, blue cheese drizzle."</span><span class="s7">,</span><span class="s4"> proteins</span><span class="s7">:</span><span class="s4"> </span><span class="s7">[</span><span class="s1">"Chicken"</span><span class="s7">]</span><span class="s4"> </span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">],</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>prices</span><span class="s7">:</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">"Chicken"</span><span class="s7">:</span><span class="s4"> </span><span class="s7">{</span><span class="s4"> </span><span class="s1">"Mini Muscle"</span><span class="s7">:</span><span class="s4"> </span><span class="s12">10.99</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Gainz Grill"</span><span class="s7">:</span><span class="s4"> </span><span class="s12">14.99</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Bicep Beast"</span><span class="s7">:</span><span class="s4"> </span><span class="s12">18.99</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">"Steak"</span><span class="s7">:</span><span class="s4"> </span><span class="s7">{</span><span class="s4"> </span><span class="s1">"Mini Muscle"</span><span class="s7">:</span><span class="s4"> </span><span class="s12">11.49</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Gainz Grill"</span><span class="s7">:</span><span class="s4"> </span><span class="s12">15.49</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Bicep Beast"</span><span class="s7">:</span><span class="s4"> </span><span class="s12">19.49</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">"Lamb"</span><span class="s7">:</span><span class="s4"> </span><span class="s7">{</span><span class="s4"> </span><span class="s1">"Mini Muscle"</span><span class="s7">:</span><span class="s4"> </span><span class="s12">12.99</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Gainz Grill"</span><span class="s7">:</span><span class="s4"> </span><span class="s12">16.99</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Bicep Beast"</span><span class="s7">:</span><span class="s4"> </span><span class="s12">20.99</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">"Plant-Based"</span><span class="s7">:</span><span class="s4"> </span><span class="s7">{</span><span class="s4"> </span><span class="s1">"Mini Muscle"</span><span class="s7">:</span><span class="s4"> </span><span class="s12">10.99</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Gainz Grill"</span><span class="s7">:</span><span class="s4"> </span><span class="s12">14.99</span><span class="s7">,</span><span class="s4"> </span><span class="s1">"Bicep Beast"</span><span class="s7">:</span><span class="s4"> </span><span class="s12">18.99</span><span class="s4"> </span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">},</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>sauces</span><span class="s7">:</span><span class="s1"> </span><span class="s7">[</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Gym God Garlic Dip"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Creamy garlic-herb dip"</span><span class="s7">,</span><span class="s4"> price</span><span class="s7">:</span><span class="s4"> </span><span class="s12">1.00</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Chipotle Powerhouse"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Smoky chipotle kick"</span><span class="s7">,</span><span class="s4"> price</span><span class="s7">:</span><span class="s4"> </span><span class="s12">1.00</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Cool Down Cucumber-Dill"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Refreshing and light"</span><span class="s7">,</span><span class="s4"> price</span><span class="s7">:</span><span class="s4"> </span><span class="s12">0.75</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Sweet Gains Honey-Lime"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Subtle sweet &amp; zesty"</span><span class="s7">,</span><span class="s4"> price</span><span class="s7">:</span><span class="s4"> </span><span class="s12">0.75</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> name</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Spicy Flex Sriracha Swirl"</span><span class="s7">,</span><span class="s4"> desc</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Creamy with extra heat"</span><span class="s7">,</span><span class="s4"> price</span><span class="s7">:</span><span class="s4"> </span><span class="s12">1.00</span><span class="s4"> </span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">]</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">};</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s8">'DOMContentLoaded'</span><span class="s7">,</span><span class="s1"> </span><span class="s7">()</span><span class="s1"> </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> kebabGrid </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'kebab-grid'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> sauceGrid </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'sauce-grid'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> filterContainer </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'filter-container'</span><span class="s7">);</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">const</span><span class="s1"> allProteins </span><span class="s7">=</span><span class="s1"> </span><span class="s7">[</span><span class="s8">"All"</span><span class="s7">,</span><span class="s1"> </span><span class="s7">...</span><span class="s10">new</span><span class="s1"> </span><span class="s13">Set</span><span class="s7">(</span><span class="s1">menuData</span><span class="s7">.</span><span class="s1">kebabs</span><span class="s7">.</span><span class="s1">flatMap</span><span class="s7">(</span><span class="s1">k </span><span class="s7">=&gt;</span><span class="s1"> k</span><span class="s7">.</span><span class="s1">proteins</span><span class="s7">))];</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">function</span><span class="s1"> renderFilters</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>filterContainer</span><span class="s7">.</span><span class="s1">innerHTML </span><span class="s7">=</span><span class="s1"> allProteins</span><span class="s7">.</span><span class="s1">map</span><span class="s7">(</span><span class="s1">protein </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s8">`</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button class="filter-btn font-bebas text-xl tracking-wider py-2 px-5 rounded-md border-2 border-gray-600 hover:bg-yellow-500 hover:text-black transition-colors duration-300 </span><span class="s7">${</span><span class="s4">protein </span><span class="s7">===</span><span class="s4"> </span><span class="s1">'All'</span><span class="s4"> </span><span class="s7">?</span><span class="s4"> </span><span class="s1">'selected-btn'</span><span class="s4"> </span><span class="s7">:</span><span class="s4"> </span><span class="s1">''</span><span class="s7">}</span><span class="s1">" data-filter="</span><span class="s7">${</span><span class="s4">protein</span><span class="s7">}</span><span class="s1">"&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s7">${</span><span class="s4">protein</span><span class="s7">}</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                </span>`</span><span class="s7">).</span><span class="s4">join</span><span class="s7">(</span><span class="s1">''</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">function</span><span class="s1"> renderKebabs</span><span class="s7">(</span><span class="s1">filter </span><span class="s7">=</span><span class="s1"> </span><span class="s8">'All'</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>kebabGrid</span><span class="s7">.</span><span class="s1">innerHTML </span><span class="s7">=</span><span class="s1"> </span><span class="s8">''</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> filteredKebabs </span><span class="s7">=</span><span class="s1"> filter </span><span class="s7">===</span><span class="s1"> </span><span class="s8">'All'</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">?</span><span class="s1"> menuData</span><span class="s7">.</span><span class="s1">kebabs</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">:</span><span class="s1"> menuData</span><span class="s7">.</span><span class="s1">kebabs</span><span class="s7">.</span><span class="s1">filter</span><span class="s7">(</span><span class="s1">kebab </span><span class="s7">=&gt;</span><span class="s1"> kebab</span><span class="s7">.</span><span class="s1">proteins</span><span class="s7">.</span><span class="s1">includes</span><span class="s7">(</span><span class="s1">filter</span><span class="s7">));</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>filteredKebabs</span><span class="s7">.</span><span class="s1">forEach</span><span class="s7">(</span><span class="s1">kebab </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">const</span><span class="s1"> firstProtein </span><span class="s7">=</span><span class="s1"> kebab</span><span class="s7">.</span><span class="s1">proteins</span><span class="s7">[</span><span class="s12">0</span><span class="s7">];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">const</span><span class="s1"> firstSize </span><span class="s7">=</span><span class="s1"> </span><span class="s8">"Gainz Grill"</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">const</span><span class="s1"> initialPrice </span><span class="s7">=</span><span class="s1"> menuData</span><span class="s7">.</span><span class="s1">prices</span><span class="s7">[</span><span class="s1">firstProtein</span><span class="s7">][</span><span class="s1">firstSize</span><span class="s7">].</span><span class="s1">toFixed</span><span class="s7">(</span><span class="s12">2</span><span class="s7">);</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">const</span><span class="s1"> card </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">createElement</span><span class="s7">(</span><span class="s8">'div'</span><span class="s7">);</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">                    </span>card</span><span class="s7">.</span><span class="s4">className </span><span class="s7">=</span><span class="s4"> </span><span class="s1">'kebab-card bg-gray-800 bg-opacity-50 rounded-lg shadow-lg p-6 flex flex-col transition-all duration-300'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>card</span><span class="s7">.</span><span class="s1">dataset</span><span class="s7">.</span><span class="s1">proteins </span><span class="s7">=</span><span class="s1"> kebab</span><span class="s7">.</span><span class="s1">proteins</span><span class="s7">.</span><span class="s1">join</span><span class="s7">(</span><span class="s8">','</span><span class="s7">);</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>card</span><span class="s7">.</span><span class="s1">innerHTML </span><span class="s7">=</span><span class="s1"> </span><span class="s8">`</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="flex-grow"&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bebas text-3xl gradient-text"&gt;</span><span class="s7">${</span><span class="s4">kebab</span><span class="s7">.</span><span class="s4">name</span><span class="s7">}</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p class="text-gray-400 mb-4 h-12"&gt;</span><span class="s7">${</span><span class="s4">kebab</span><span class="s7">.</span><span class="s4">desc</span><span class="s7">}</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="mb-4"&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;label class="font-bold text-gray-300"&gt;Protein:&lt;/label&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div class="flex flex-wrap gap-2 mt-2 protein-selector"&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                                    </span></span><span class="s7">${</span><span class="s4">kebab</span><span class="s7">.</span><span class="s4">proteins</span><span class="s7">.</span><span class="s4">map</span><span class="s7">((</span><span class="s4">p</span><span class="s7">,</span><span class="s4"> index</span><span class="s7">)</span><span class="s4"> </span><span class="s7">=&gt;</span><span class="s4"> </span><span class="s1">`&lt;button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors </span><span class="s7">${</span><span class="s4">index </span><span class="s7">===</span><span class="s4"> </span><span class="s12">0</span><span class="s4"> </span><span class="s7">?</span><span class="s4"> </span><span class="s1">'selected-btn'</span><span class="s4"> </span><span class="s7">:</span><span class="s4"> </span><span class="s1">''</span><span class="s7">}</span><span class="s1">" data-protein="</span><span class="s7">${</span><span class="s4">p</span><span class="s7">}</span><span class="s1">"&gt;</span><span class="s7">${</span><span class="s4">p</span><span class="s7">}</span><span class="s1">&lt;/button&gt;`</span><span class="s7">).</span><span class="s4">join</span><span class="s7">(</span><span class="s1">''</span><span class="s7">)}</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="mb-6"&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;label class="font-bold text-gray-300"&gt;Size:&lt;/label&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div class="flex flex-wrap gap-2 mt-2 size-selector"&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors" data-size="Mini Muscle"&gt;30g Protein&lt;/button&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors selected-btn" data-size="Gainz Grill"&gt;60g Protein&lt;/button&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors" data-size="Bicep Beast"&gt;100g Protein&lt;/button&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="text-center mt-auto"&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;span class="price-display font-bebas text-5xl text-white"&gt;</span><span class="s14">$</span><span class="s7">${</span><span class="s4">initialPrice</span><span class="s7">}</span><span class="s1">&lt;/span&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                    </span>`</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>kebabGrid</span><span class="s7">.</span><span class="s1">appendChild</span><span class="s7">(</span><span class="s1">card</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">function</span><span class="s1"> renderSauces</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>sauceGrid</span><span class="s7">.</span><span class="s1">innerHTML </span><span class="s7">=</span><span class="s1"> menuData</span><span class="s7">.</span><span class="s1">sauces</span><span class="s7">.</span><span class="s1">map</span><span class="s7">(</span><span class="s1">sauce </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s8">`</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 text-center"&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h4 class="font-bebas text-2xl text-yellow-400"&gt;</span><span class="s7">${</span><span class="s4">sauce</span><span class="s7">.</span><span class="s4">name</span><span class="s7">}</span><span class="s1">&lt;/h4&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-400 text-sm mb-2"&gt;</span><span class="s7">${</span><span class="s4">sauce</span><span class="s7">.</span><span class="s4">desc</span><span class="s7">}</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="font-bold text-lg"&gt;</span><span class="s14">$</span><span class="s7">${</span><span class="s4">sauce</span><span class="s7">.</span><span class="s4">price</span><span class="s7">.</span><span class="s4">toFixed</span><span class="s7">(</span><span class="s12">2</span><span class="s7">)}</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">                </span>`</span><span class="s7">).</span><span class="s4">join</span><span class="s7">(</span><span class="s1">''</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s10">function</span><span class="s1"> updatePrice</span><span class="s7">(</span><span class="s1">card</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> selectedProtein </span><span class="s7">=</span><span class="s1"> card</span><span class="s7">.</span><span class="s1">querySelector</span><span class="s7">(</span><span class="s8">'.protein-selector .selected-btn'</span><span class="s7">).</span><span class="s1">dataset</span><span class="s7">.</span><span class="s1">protein</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> selectedSize </span><span class="s7">=</span><span class="s1"> card</span><span class="s7">.</span><span class="s1">querySelector</span><span class="s7">(</span><span class="s8">'.size-selector .selected-btn'</span><span class="s7">).</span><span class="s1">dataset</span><span class="s7">.</span><span class="s1">size</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> priceDisplay </span><span class="s7">=</span><span class="s1"> card</span><span class="s7">.</span><span class="s1">querySelector</span><span class="s7">(</span><span class="s8">'.price-display'</span><span class="s7">);</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> price </span><span class="s7">=</span><span class="s1"> menuData</span><span class="s7">.</span><span class="s1">prices</span><span class="s7">[</span><span class="s1">selectedProtein</span><span class="s7">]?.[</span><span class="s1">selectedSize</span><span class="s7">];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">price </span><span class="s7">!==</span><span class="s1"> </span><span class="s10">undefined</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>priceDisplay</span><span class="s7">.</span><span class="s1">textContent </span><span class="s7">=</span><span class="s1"> </span><span class="s8">`</span><span class="s14">$</span><span class="s7">${</span><span class="s1">price</span><span class="s7">.</span><span class="s1">toFixed</span><span class="s7">(</span><span class="s12">2</span><span class="s7">)}</span><span class="s8">`</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>priceDisplay</span><span class="s7">.</span><span class="s1">textContent </span><span class="s7">=</span><span class="s1"> </span><span class="s8">'N/A'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>kebabGrid</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s8">'click'</span><span class="s7">,</span><span class="s1"> e </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> target </span><span class="s7">=</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">target</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(!</span><span class="s1">target</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">contains</span><span class="s7">(</span><span class="s8">'kebab-btn'</span><span class="s7">))</span><span class="s1"> </span><span class="s10">return</span><span class="s7">;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> card </span><span class="s7">=</span><span class="s1"> target</span><span class="s7">.</span><span class="s1">closest</span><span class="s7">(</span><span class="s8">'.kebab-card'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> selector </span><span class="s7">=</span><span class="s1"> target</span><span class="s7">.</span><span class="s1">parentElement</span><span class="s7">;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>selector</span><span class="s7">.</span><span class="s1">querySelectorAll</span><span class="s7">(</span><span class="s8">'.kebab-btn'</span><span class="s7">).</span><span class="s1">forEach</span><span class="s7">(</span><span class="s1">btn </span><span class="s7">=&gt;</span><span class="s1"> btn</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s8">'selected-btn'</span><span class="s7">));</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>target</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s8">'selected-btn'</span><span class="s7">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>updatePrice</span><span class="s7">(</span><span class="s1">card</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">});</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>filterContainer</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s8">'click'</span><span class="s7">,</span><span class="s1"> e </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> target </span><span class="s7">=</span><span class="s1"> e</span><span class="s7">.</span><span class="s1">target</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(!</span><span class="s1">target</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">contains</span><span class="s7">(</span><span class="s8">'filter-btn'</span><span class="s7">))</span><span class="s1"> </span><span class="s10">return</span><span class="s7">;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>filterContainer</span><span class="s7">.</span><span class="s1">querySelectorAll</span><span class="s7">(</span><span class="s8">'.filter-btn'</span><span class="s7">).</span><span class="s1">forEach</span><span class="s7">(</span><span class="s1">btn </span><span class="s7">=&gt;</span><span class="s1"> btn</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s8">'selected-btn'</span><span class="s7">));</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>target</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s8">'selected-btn'</span><span class="s7">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> filter </span><span class="s7">=</span><span class="s1"> target</span><span class="s7">.</span><span class="s1">dataset</span><span class="s7">.</span><span class="s1">filter</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s10">const</span><span class="s1"> kebabCards </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">querySelectorAll</span><span class="s7">(</span><span class="s8">'.kebab-card'</span><span class="s7">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>kebabCards</span><span class="s7">.</span><span class="s1">forEach</span><span class="s7">(</span><span class="s1">card </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">const</span><span class="s1"> cardProteins </span><span class="s7">=</span><span class="s1"> card</span><span class="s7">.</span><span class="s1">dataset</span><span class="s7">.</span><span class="s1">proteins</span><span class="s7">.</span><span class="s1">split</span><span class="s7">(</span><span class="s8">','</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s10">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">filter </span><span class="s7">===</span><span class="s1"> </span><span class="s8">'All'</span><span class="s1"> </span><span class="s7">||</span><span class="s1"> cardProteins</span><span class="s7">.</span><span class="s1">includes</span><span class="s7">(</span><span class="s1">filter</span><span class="s7">))</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>card</span><span class="s7">.</span><span class="s1">style</span><span class="s7">.</span><span class="s1">display </span><span class="s7">=</span><span class="s1"> </span><span class="s8">'flex'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">}</span><span class="s1"> </span><span class="s10">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>card</span><span class="s7">.</span><span class="s1">style</span><span class="s7">.</span><span class="s1">display </span><span class="s7">=</span><span class="s1"> </span><span class="s8">'none'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">});</span></p>
-<p class="p5"><span class="s11"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>renderFilters</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>renderKebabs</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>renderSauces</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">});</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">body</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">html</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s11"></span><br></p>
+<body class="antialiased">
+
+    <header class="text-center py-12">
+        <h1 class="font-bebas text-7xl md:text-8xl tracking-wider gradient-text">BICEP GUYS</h1>
+        <p class="mt-2 text-xl text-gray-300">Fuel Your Goals, Deliciously. Always Guilt-Free. No Seed Oils.</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+
+        <section id="menu-intro" class="text-center mb-12">
+            <h2 class="font-bebas text-5xl tracking-wide mb-4">Build Your Power Meal</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-400">
+                Welcome to the ultimate fuel station. Our menu is designed for performance and taste. Select a kebab, choose your protein, pick your size, and add one of our guilt-free sauces to complete your perfect high-protein meal. Every kebab comes with a side of rice and a nutrient-packed veggie bowl.
+            </p>
+        </section>
+
+        <section id="kebab-menu">
+            <div id="filter-container" class="flex flex-wrap justify-center gap-3 mb-10">
+            </div>
+
+            <div id="kebab-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+        </section>
+
+        <section id="sauces-section" class="mt-20">
+            <h2 class="font-bebas text-5xl tracking-wide text-center mb-10">Guilt-Free Power Sauces</h2>
+            <div id="sauce-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="text-center py-6 bg-black bg-opacity-30">
+        <p class="text-gray-400">&copy; 2025 Bicep Guys. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const menuData = {
+            kebabs: [
+                { id: 1, name: "Olympian Original", desc: "Classic Mediterranean: Garlic, oregano, lemon, olive oil marinade.", proteins: ["Chicken", "Steak", "Lamb", "Plant-Based"] },
+                { id: 2, name: "Smoky Shredder", desc: "Smoky Chipotle-Lime: Chipotle peppers, lime zest, smoked paprika.", proteins: ["Chicken", "Steak", "Plant-Based"] },
+                { id: 3, name: "Tandoori Titan", desc: "Tandoori Power: Yogurt, turmeric, ginger, garam masala.", proteins: ["Chicken", "Lamb", "Plant-Based"] },
+                { id: 4, name: "Seoul Surge", desc: "Korean BBQ Fire: Gochujang, sesame, scallion, honey glaze.", proteins: ["Chicken", "Steak", "Plant-Based"] },
+                { id: 5, name: "Zesty Zenith", desc: "Zesty Herb & Citrus: Parsley, cilantro, orange, lemon, chili flakes.", proteins: ["Chicken", "Plant-Based"] },
+                { id: 6, name: "Island Inferno", desc: "Spicy Jamaican Jerk: Allspice, thyme, Scotch bonnet, cinnamon.", proteins: ["Chicken", "Steak"] },
+                { id: 7, name: "Golden Gains", desc: "Honey Mustard Crunch: Honey, Dijon, cracked pepper, toasted seeds.", proteins: ["Chicken", "Plant-Based"] },
+                { id: 8, name: "Garlic Gauntlet", desc: "Garlic Parmesan: Roasted garlic, parmesan, Italian herbs.", proteins: ["Chicken", "Steak", "Plant-Based"] },
+                { id: 9, name: "Teriyaki Triumph", desc: "Teriyaki Ginger: Soy, ginger, pineapple, green onion.", proteins: ["Chicken", "Steak", "Plant-Based"] },
+                { id: 10, name: "Buffalo Beast", desc: "Buffalo Sriracha: Hot sauce, sriracha, celery seed, blue cheese drizzle.", proteins: ["Chicken"] }
+            ],
+            prices: {
+                "Chicken": { "Mini Muscle": 10.99, "Gainz Grill": 14.99, "Bicep Beast": 18.99 },
+                "Steak": { "Mini Muscle": 11.49, "Gainz Grill": 15.49, "Bicep Beast": 19.49 },
+                "Lamb": { "Mini Muscle": 12.99, "Gainz Grill": 16.99, "Bicep Beast": 20.99 },
+                "Plant-Based": { "Mini Muscle": 10.99, "Gainz Grill": 14.99, "Bicep Beast": 18.99 }
+            },
+            sauces: [
+                { name: "Gym God Garlic Dip", desc: "Creamy garlic-herb dip", price: 1.00 },
+                { name: "Chipotle Powerhouse", desc: "Smoky chipotle kick", price: 1.00 },
+                { name: "Cool Down Cucumber-Dill", desc: "Refreshing and light", price: 0.75 },
+                { name: "Sweet Gains Honey-Lime", desc: "Subtle sweet & zesty", price: 0.75 },
+                { name: "Spicy Flex Sriracha Swirl", desc: "Creamy with extra heat", price: 1.00 }
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const kebabGrid = document.getElementById('kebab-grid');
+            const sauceGrid = document.getElementById('sauce-grid');
+            const filterContainer = document.getElementById('filter-container');
+
+            const allProteins = ["All", ...new Set(menuData.kebabs.flatMap(k => k.proteins))];
+
+            function renderFilters() {
+                filterContainer.innerHTML = allProteins.map(protein => `
+                    <button class="filter-btn font-bebas text-xl tracking-wider py-2 px-5 rounded-md border-2 border-gray-600 hover:bg-yellow-500 hover:text-black transition-colors duration-300 ${protein === 'All' ? 'selected-btn' : ''}" data-filter="${protein}">
+                        ${protein}
+                    </button>
+                `).join('');
+            }
+
+            function renderKebabs(filter = 'All') {
+                kebabGrid.innerHTML = '';
+                const filteredKebabs = filter === 'All'
+                    ? menuData.kebabs
+                    : menuData.kebabs.filter(kebab => kebab.proteins.includes(filter));
+
+                filteredKebabs.forEach(kebab => {
+                    const firstProtein = kebab.proteins[0];
+                    const firstSize = "Gainz Grill";
+                    const initialPrice = menuData.prices[firstProtein][firstSize].toFixed(2);
+
+                    const card = document.createElement('div');
+                    card.className = 'kebab-card bg-gray-800 bg-opacity-50 rounded-lg shadow-lg p-6 flex flex-col transition-all duration-300';
+                    card.dataset.proteins = kebab.proteins.join(',');
+
+                    card.innerHTML = `
+                        <div class="flex-grow">
+                            <h3 class="font-bebas text-3xl gradient-text">${kebab.name}</h3>
+                            <p class="text-gray-400 mb-4 h-12">${kebab.desc}</p>
+
+                            <div class="mb-4">
+                                <label class="font-bold text-gray-300">Protein:</label>
+                                <div class="flex flex-wrap gap-2 mt-2 protein-selector">
+                                    ${kebab.proteins.map((p, index) => `<button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors ${index === 0 ? 'selected-btn' : ''}" data-protein="${p}">${p}</button>`).join('')}
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="font-bold text-gray-300">Size:</label>
+                                <div class="flex flex-wrap gap-2 mt-2 size-selector">
+                                    <button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors" data-size="Mini Muscle">30g Protein</button>
+                                    <button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors selected-btn" data-size="Gainz Grill">60g Protein</button>
+                                    <button class="kebab-btn flex-1 py-1 px-2 rounded border border-gray-600 hover:bg-yellow-400 transition-colors" data-size="Bicep Beast">100g Protein</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-auto">
+                            <span class="price-display font-bebas text-5xl text-white">$${initialPrice}</span>
+                        </div>
+                    `;
+                    kebabGrid.appendChild(card);
+                });
+            }
+
+            function renderSauces() {
+                sauceGrid.innerHTML = menuData.sauces.map(sauce => `
+                    <div class="bg-gray-800 bg-opacity-50 rounded-lg p-4 text-center">
+                        <h4 class="font-bebas text-2xl text-yellow-400">${sauce.name}</h4>
+                        <p class="text-gray-400 text-sm mb-2">${sauce.desc}</p>
+                        <p class="font-bold text-lg">$${sauce.price.toFixed(2)}</p>
+                    </div>
+                `).join('');
+            }
+            
+            function updatePrice(card) {
+                const selectedProtein = card.querySelector('.protein-selector .selected-btn').dataset.protein;
+                const selectedSize = card.querySelector('.size-selector .selected-btn').dataset.size;
+                const priceDisplay = card.querySelector('.price-display');
+
+                const price = menuData.prices[selectedProtein]?.[selectedSize];
+                if (price !== undefined) {
+                    priceDisplay.textContent = `$${price.toFixed(2)}`;
+                } else {
+                    priceDisplay.textContent = 'N/A';
+                }
+            }
+
+            kebabGrid.addEventListener('click', e => {
+                const target = e.target;
+                if (!target.classList.contains('kebab-btn')) return;
+
+                const card = target.closest('.kebab-card');
+                const selector = target.parentElement;
+
+                selector.querySelectorAll('.kebab-btn').forEach(btn => btn.classList.remove('selected-btn'));
+                target.classList.add('selected-btn');
+                
+                updatePrice(card);
+            });
+            
+            filterContainer.addEventListener('click', e => {
+                const target = e.target;
+                if (!target.classList.contains('filter-btn')) return;
+
+                filterContainer.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('selected-btn'));
+                target.classList.add('selected-btn');
+                
+                const filter = target.dataset.filter;
+                const kebabCards = document.querySelectorAll('.kebab-card');
+                
+                kebabCards.forEach(card => {
+                    const cardProteins = card.dataset.proteins.split(',');
+                    if (filter === 'All' || cardProteins.includes(filter)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            renderFilters();
+            renderKebabs();
+            renderSauces();
+        });
+    </script>
 </body>
 </html>
