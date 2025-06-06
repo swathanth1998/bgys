@@ -27,8 +27,26 @@
             color: #1a1a1a !important;
             border-color: #FDB813 !important;
         }
+        .selected-nav-button {
+            background-color: #FDB813 !important;
+            color: #1a1a1a !important;
+            border-color: #FDB813 !important;
+            box-shadow: 0 4px 14px 0 rgba(253, 184, 19, 0.4);
+        }
         .section-hidden {
             display: none;
+        }
+        .kebab-image-wrapper {
+            transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, margin-bottom 0.3s ease-in-out;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+        .kebab-card:hover .kebab-image-wrapper {
+            opacity: 1;
+            height: 10rem;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -38,14 +56,15 @@
         <h1 class="font-bebas text-7xl md:text-8xl tracking-wider gradient-text">BICEP GUYS</h1>
         <p class="mt-2 text-xl text-gray-300">Fuel Your Goals, Deliciously. Always Guilt-Free. No Seed Oils.</p>
         <nav class="mt-6">
-            <button id="nav-menu" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300 text-yellow-400 selected-nav-button">Menu</button>
+            <button id="nav-menu" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300 selected-nav-button">Menu</button>
             <button id="nav-about" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300">About Us</button>
+            <button id="nav-cart" class="nav-button font-bebas text-2xl tracking-wide py-2 px-6 mx-3 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-300">Cart (<span id="cart-count">0</span>)</button>
         </nav>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
 
-        <section id="menu-section" class="">
+        <section id="menu-section">
             <div id="menu-intro" class="text-center mb-12 pt-12">
                 <h2 class="font-bebas text-5xl tracking-wide mb-4">Build Your Power Meal</h2>
                 <p class="max-w-3xl mx-auto text-lg text-gray-400">
@@ -81,6 +100,55 @@
             </div>
         </section>
 
+        <section id="cart-section" class="section-hidden py-12">
+            <h2 class="font-bebas text-5xl tracking-wide text-center mb-10 gradient-text">Your Power Cart</h2>
+            <div id="cart-items-container" class="max-w-3xl mx-auto bg-gray-800 bg-opacity-50 rounded-lg p-6 space-y-4">
+                <p id="empty-cart-message" class="text-center text-gray-400">Your cart is empty. Time to load up on some gains!</p>
+            </div>
+            <div class="max-w-3xl mx-auto mt-6 p-4 bg-gray-800 bg-opacity-50 rounded-lg flex justify-between items-center font-bebas text-3xl">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <div class="max-w-3xl mx-auto mt-6 flex flex-wrap justify-center gap-4">
+                <button id="checkout-button" class="font-bebas text-2xl py-3 px-8 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300">Proceed to Checkout</button>
+                <button id="clear-cart-button" class="font-bebas text-2xl py-3 px-8 rounded-full bg-red-600 text-white hover:bg-red-500 transition-colors duration-300">Clear Cart</button>
+            </div>
+        </section>
+
+        <section id="checkout-section" class="section-hidden py-12">
+            <h2 class="font-bebas text-5xl tracking-wide text-center mb-10 gradient-text">Checkout</h2>
+            <div id="checkout-summary" class="max-w-3xl mx-auto bg-gray-800 bg-opacity-50 rounded-lg p-6 space-y-4">
+                <h3 class="font-bebas text-3xl text-yellow-400 mb-4">Order Summary</h3>
+                <div id="checkout-items" class="space-y-2 text-gray-300">
+                </div>
+                <div class="border-t border-gray-700 pt-4 mt-4 font-bebas text-3xl flex justify-between">
+                    <span>Order Total:</span>
+                    <span id="checkout-total-summary">$0.00</span>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto mt-8 bg-gray-800 bg-opacity-50 rounded-lg p-6">
+                <h3 class="font-bebas text-3xl text-yellow-400 mb-4">Customer Information</h3>
+                <form id="checkout-form" class="space-y-4">
+                    <div>
+                        <label for="customer-name" class="block text-gray-300 text-lg mb-2">Full Name</label>
+                        <input type="text" id="customer-name" class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="John Doe" required>
+                    </div>
+                    <div>
+                        <label for="customer-email" class="block text-gray-300 text-lg mb-2">Email</label>
+                        <input type="email" id="customer-email" class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="john.doe@example.com" required>
+                    </div>
+                    <div>
+                        <label for="customer-address" class="block text-gray-300 text-lg mb-2">Delivery Address</label>
+                        <textarea id="customer-address" rows="3" class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="123 Gym Rat Avenue, Apt 4B, Fitness City, FL 33101" required></textarea>
+                    </div>
+                    <div class="text-center mt-6">
+                        <button type="submit" class="font-bebas text-2xl py-3 px-8 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300">Place Order</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
     </main>
     
     <footer class="text-center py-6 bg-black bg-opacity-30">
@@ -90,16 +158,16 @@
     <script>
         const menuData = {
             kebabs: [
-                { id: 1, name: "Olympian Original", desc: "Classic Mediterranean: Garlic, oregano, lemon, olive oil marinade.", proteins: ["Chicken", "Steak", "Lamb", "Plant-Based"] },
-                { id: 2, name: "Smoky Shredder", desc: "Smoky Chipotle-Lime: Chipotle peppers, lime zest, smoked paprika.", proteins: ["Chicken", "Steak", "Plant-Based"] },
-                { id: 3, name: "Tandoori Titan", desc: "Tandoori Power: Yogurt, turmeric, ginger, garam masala.", proteins: ["Chicken", "Lamb", "Plant-Based"] },
-                { id: 4, name: "Seoul Surge", desc: "Korean BBQ Fire: Gochujang, sesame, scallion, honey glaze.", proteins: ["Chicken", "Steak", "Plant-Based"] },
-                { id: 5, name: "Zesty Zenith", desc: "Zesty Herb & Citrus: Parsley, cilantro, orange, lemon, chili flakes.", proteins: ["Chicken", "Plant-Based"] },
-                { id: 6, name: "Island Inferno", desc: "Spicy Jamaican Jerk: Allspice, thyme, Scotch bonnet, cinnamon.", proteins: ["Chicken", "Steak"] },
-                { id: 7, name: "Golden Gains", desc: "Honey Mustard Crunch: Honey, Dijon, cracked pepper, toasted seeds.", proteins: ["Chicken", "Plant-Based"] },
-                { id: 8, name: "Garlic Gauntlet", desc: "Roasted garlic, parmesan, Italian herbs.", proteins: ["Chicken", "Steak", "Plant-Based"] },
-                { id: 9, name: "Teriyaki Triumph", desc: "Teriyaki Ginger: Soy, ginger, pineapple, green onion.", proteins: ["Chicken", "Steak", "Plant-Based"] },
-                { id: 10, name: "Buffalo Beast", desc: "Buffalo Sriracha: Hot sauce, sriracha, celery seed, blue cheese drizzle.", proteins: ["Chicken"] }
+                { id: 1, name: "Olympian Original", desc: "Classic Mediterranean: Garlic, oregano, lemon, olive oil marinade.", proteins: ["Chicken", "Steak", "Lamb", "Plant-Based"], imageUrl: "https://placehold.co/400x250/FDB813/1a1a1a?text=Mediterranean%0AKebab" },
+                { id: 2, name: "Smoky Shredder", desc: "Smoky Chipotle-Lime: Chipotle peppers, lime zest, smoked paprika.", proteins: ["Chicken", "Steak", "Plant-Based"], imageUrl: "https://placehold.co/400x250/FFAA00/1a1a1a?text=Chipotle%0AKebab" },
+                { id: 3, name: "Tandoori Titan", desc: "Tandoori Power: Yogurt, turmeric, ginger, garam masala.", proteins: ["Chicken", "Lamb", "Plant-Based"], imageUrl: "https://placehold.co/400x250/FDB813/1a1a1a?text=Tandoori%0AKebab" },
+                { id: 4, name: "Seoul Surge", desc: "Korean BBQ Fire: Gochujang, sesame, scallion, honey glaze.", proteins: ["Chicken", "Steak", "Plant-Based"], imageUrl: "https://placehold.co/400x250/FFAA00/1a1a1a?text=Korean+BBQ%0AKebab" },
+                { id: 5, name: "Zesty Zenith", desc: "Zesty Herb & Citrus: Parsley, cilantro, orange, lemon, chili flakes.", proteins: ["Chicken", "Plant-Based"], imageUrl: "https://placehold.co/400x250/FDB813/1a1a1a?text=Citrus+Herb%0AKebab" },
+                { id: 6, name: "Island Inferno", desc: "Spicy Jamaican Jerk: Allspice, thyme, Scotch bonnet, cinnamon.", proteins: ["Chicken", "Steak"], imageUrl: "https://placehold.co/400x250/FFAA00/1a1a1a?text=Jamaican+Jerk%0AKebab" },
+                { id: 7, name: "Golden Gains", desc: "Honey Mustard Crunch: Honey, Dijon, cracked pepper, toasted seeds.", proteins: ["Chicken", "Plant-Based"], imageUrl: "https://placehold.co/400x250/FDB813/1a1a1a?text=Honey+Mustard%0AKebab" },
+                { id: 8, name: "Garlic Gauntlet", desc: "Roasted garlic, parmesan, Italian herbs.", proteins: ["Chicken", "Steak", "Plant-Based"], imageUrl: "https://placehold.co/400x250/FFAA00/1a1a1a?text=Garlic+Parmesan%0AKebab" },
+                { id: 9, name: "Teriyaki Triumph", desc: "Teriyaki Ginger: Soy, ginger, pineapple, green onion.", proteins: ["Chicken", "Steak", "Plant-Based"], imageUrl: "https://placehold.co/400x250/FDB813/1a1a1a?text=Teriyaki%0AKebab" },
+                { id: 10, name: "Buffalo Beast", desc: "Buffalo Sriracha: Hot sauce, sriracha, celery seed, blue cheese drizzle.", proteins: ["Chicken"], imageUrl: "https://placehold.co/400x250/FFAA00/1a1a1a?text=Buffalo%0AKebab" }
             ],
             prices: {
                 "Chicken": { "Mini Muscle": 10.99, "Gainz Grill": 14.99, "Bicep Beast": 18.99 },
@@ -116,15 +184,30 @@
             ]
         };
 
+        let cart = [];
+
         document.addEventListener('DOMContentLoaded', () => {
             const menuSection = document.getElementById('menu-section');
             const aboutSection = document.getElementById('about-section');
+            const cartSection = document.getElementById('cart-section');
+            const checkoutSection = document.getElementById('checkout-section');
+
             const navMenuBtn = document.getElementById('nav-menu');
             const navAboutBtn = document.getElementById('nav-about');
+            const navCartBtn = document.getElementById('nav-cart');
+            const cartCountSpan = document.getElementById('cart-count');
 
             const kebabGrid = document.getElementById('kebab-grid');
             const sauceGrid = document.getElementById('sauce-grid');
             const filterContainer = document.getElementById('filter-container');
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const cartTotalSpan = document.getElementById('cart-total');
+            const checkoutButton = document.getElementById('checkout-button');
+            const clearCartButton = document.getElementById('clear-cart-button');
+            const checkoutItemsDiv = document.getElementById('checkout-items');
+            const checkoutTotalSummarySpan = document.getElementById('checkout-total-summary');
+            const checkoutForm = document.getElementById('checkout-form');
 
             const allProteins = ["All", ...new Set(menuData.kebabs.flatMap(k => k.proteins))];
 
@@ -148,10 +231,13 @@
                     const initialPrice = menuData.prices[firstProtein]?.[firstSize]?.toFixed(2) || 'N/A';
 
                     const card = document.createElement('div');
-                    card.className = 'kebab-card bg-gray-800 bg-opacity-50 rounded-lg shadow-lg p-6 flex flex-col transition-all duration-300';
-                    card.dataset.proteins = kebab.proteins.join(',');
+                    card.className = 'kebab-card bg-gray-800 bg-opacity-50 rounded-lg shadow-lg p-6 flex flex-col transition-all duration-300 group';
+                    card.dataset.kebabId = kebab.id;
 
                     card.innerHTML = `
+                        <div class="kebab-image-wrapper relative w-full h-40 bg-gray-700 rounded-md overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <img src="${kebab.imageUrl}" alt="${kebab.name}" class="w-full h-full object-cover">
+                        </div>
                         <div class="flex-grow">
                             <h3 class="font-bebas text-3xl gradient-text">${kebab.name}</h3>
                             <p class="text-gray-400 mb-4 h-12">${kebab.desc}</p>
@@ -175,6 +261,7 @@
 
                         <div class="text-center mt-auto">
                             <span class="price-display font-bebas text-5xl text-white">$${initialPrice}</span>
+                            <button class="add-to-cart-btn font-bebas text-xl py-2 px-6 mt-4 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full">Add to Cart</button>
                         </div>
                     `;
                     kebabGrid.appendChild(card);
@@ -204,17 +291,125 @@
                 }
             }
 
+            function updateCartCount() {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCountSpan.textContent = totalItems;
+            }
+
+            function renderCart() {
+                cartItemsContainer.innerHTML = '';
+                let total = 0;
+
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                } else {
+                    emptyCartMessage.style.display = 'none';
+                    cart.forEach((item, index) => {
+                        const itemElement = document.createElement('div');
+                        itemElement.className = 'flex justify-between items-center bg-gray-700 p-4 rounded-md';
+                        itemElement.innerHTML = `
+                            <div>
+                                <h4 class="font-bold text-lg text-yellow-400">${item.quantity}x ${item.name}</h4>
+                                <p class="text-gray-400 text-sm">${item.protein} / ${item.size}</p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="font-bold text-xl">$${(item.price * item.quantity).toFixed(2)}</span>
+                                <button class="remove-from-cart-btn bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-xl hover:bg-red-500 transition-colors duration-300" data-index="${index}">&times;</button>
+                            </div>
+                        `;
+                        cartItemsContainer.appendChild(itemElement);
+                        total += item.price * item.quantity;
+                    });
+                }
+                cartTotalSpan.textContent = `$${total.toFixed(2)}`;
+            }
+
+            function addToCart(kebabId, protein, size, price) {
+                const existingItemIndex = cart.findIndex(item => 
+                    item.kebabId === kebabId && item.protein === protein && item.size === size
+                );
+
+                if (existingItemIndex > -1) {
+                    cart[existingItemIndex].quantity++;
+                } else {
+                    const kebabInfo = menuData.kebabs.find(k => k.id === kebabId);
+                    cart.push({
+                        kebabId: kebabId,
+                        name: kebabInfo.name,
+                        protein: protein,
+                        size: size,
+                        price: price,
+                        quantity: 1
+                    });
+                }
+                updateCartCount();
+                renderCart();
+            }
+
+            function removeFromCart(index) {
+                cart.splice(index, 1);
+                updateCartCount();
+                renderCart();
+            }
+
+            function handleCheckout() {
+                checkoutItemsDiv.innerHTML = '';
+                let total = 0;
+                if (cart.length === 0) {
+                    checkoutItemsDiv.innerHTML = '<p class="text-center text-gray-400">Your cart is empty.</p>';
+                } else {
+                    cart.forEach(item => {
+                        const itemElement = document.createElement('p');
+                        itemElement.className = 'flex justify-between';
+                        itemElement.innerHTML = `<span>${item.quantity}x ${item.name} (${item.protein}, ${item.size})</span> <span>$${(item.price * item.quantity).toFixed(2)}</span>`;
+                        checkoutItemsDiv.appendChild(itemElement);
+                        total += item.price * item.quantity;
+                    });
+                }
+                checkoutTotalSummarySpan.textContent = `$${total.toFixed(2)}`;
+                showSection('checkout');
+            }
+
+            function placeOrder(event) {
+                event.preventDefault();
+                if (cart.length === 0) {
+                    alert("Your cart is empty. Please add items before placing an order.");
+                    return;
+                }
+                // In a real application, this is where you'd send order data to a backend.
+                // For this frontend-only demo, we'll simulate a confirmation.
+                alert("Order placed successfully! Your gains are on the way!");
+                cart = []; // Clear cart after order
+                updateCartCount();
+                renderCart();
+                checkoutForm.reset();
+                showSection('menu'); // Go back to menu after order
+            }
+
+            // Event Listeners
             kebabGrid.addEventListener('click', e => {
                 const target = e.target;
-                if (!target.classList.contains('kebab-btn')) return;
-
                 const card = target.closest('.kebab-card');
-                const selector = target.parentElement;
 
-                selector.querySelectorAll('.kebab-btn').forEach(btn => btn.classList.remove('selected-btn'));
-                target.classList.add('selected-btn');
-                
-                updatePrice(card);
+                if (!card) return; // Click was not within a kebab card
+
+                if (target.classList.contains('kebab-btn')) {
+                    const selector = target.parentElement;
+                    selector.querySelectorAll('.kebab-btn').forEach(btn => btn.classList.remove('selected-btn'));
+                    target.classList.add('selected-btn');
+                    updatePrice(card);
+                } else if (target.classList.contains('add-to-cart-btn')) {
+                    const kebabId = parseInt(card.dataset.kebabId);
+                    const selectedProtein = card.querySelector('.protein-selector .selected-btn').dataset.protein;
+                    const selectedSize = card.querySelector('.size-selector .selected-btn').dataset.size;
+                    const price = menuData.prices[selectedProtein]?.[selectedSize];
+
+                    if (price !== undefined) {
+                        addToCart(kebabId, selectedProtein, selectedSize, price);
+                    } else {
+                        alert('Please select protein and size to add to cart.');
+                    }
+                }
             });
             
             filterContainer.addEventListener('click', e => {
@@ -225,40 +420,60 @@
                 target.classList.add('selected-btn');
                 
                 const filter = target.dataset.filter;
-                const kebabCards = document.querySelectorAll('.kebab-card');
-                
-                kebabCards.forEach(card => {
-                    const cardProteins = card.dataset.proteins.split(',');
-                    if (filter === 'All' || cardProteins.includes(filter)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+                renderKebabs(filter); // Re-render kebabs based on filter
             });
+
+            cartItemsContainer.addEventListener('click', e => {
+                if (e.target.classList.contains('remove-from-cart-btn')) {
+                    const indexToRemove = parseInt(e.target.dataset.index);
+                    removeFromCart(indexToRemove);
+                }
+            });
+
+            checkoutButton.addEventListener('click', handleCheckout);
+            clearCartButton.addEventListener('click', () => {
+                cart = [];
+                updateCartCount();
+                renderCart();
+                alert('Your cart has been cleared!');
+            });
+            checkoutForm.addEventListener('submit', placeOrder);
 
             function showSection(sectionId) {
                 menuSection.classList.add('section-hidden');
                 aboutSection.classList.add('section-hidden');
+                cartSection.classList.add('section-hidden');
+                checkoutSection.classList.add('section-hidden');
+
+                navMenuBtn.classList.remove('selected-nav-button');
+                navAboutBtn.classList.remove('selected-nav-button');
+                navCartBtn.classList.remove('selected-nav-button');
 
                 if (sectionId === 'menu') {
                     menuSection.classList.remove('section-hidden');
                     navMenuBtn.classList.add('selected-nav-button');
-                    navAboutBtn.classList.remove('selected-nav-button');
                 } else if (sectionId === 'about') {
                     aboutSection.classList.remove('section-hidden');
                     navAboutBtn.classList.add('selected-nav-button');
-                    navMenuBtn.classList.remove('selected-nav-button');
+                } else if (sectionId === 'cart') {
+                    cartSection.classList.remove('section-hidden');
+                    navCartBtn.classList.add('selected-nav-button');
+                    renderCart(); // Ensure cart is rendered when shown
+                } else if (sectionId === 'checkout') {
+                    checkoutSection.classList.remove('section-hidden');
+                    // Nav button doesn't stay selected for checkout as it's a step
                 }
             }
 
             navMenuBtn.addEventListener('click', () => showSection('menu'));
             navAboutBtn.addEventListener('click', () => showSection('about'));
+            navCartBtn.addEventListener('click', () => showSection('cart'));
 
             // Initial render and display of menu section
             renderFilters();
             renderKebabs();
             renderSauces();
+            updateCartCount();
             showSection('menu'); // Ensure menu is shown by default
         });
     </script>
