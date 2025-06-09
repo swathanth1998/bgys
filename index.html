@@ -90,6 +90,13 @@
             color: #f1f1f1;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
+        .modal-image-preview {
+            width: 100px; /* Fixed width for modal images */
+            height: 100px; /* Fixed height for modal images */
+            object-fit: contain; /* Ensure image fits */
+            margin-left: 1rem;
+            border-radius: 0.25rem;
+        }
     </style>
 </head>
 <body>
@@ -216,6 +223,7 @@
         <p>&copy; 2025 Bicep Guys. All Rights Reserved.</p>
     </footer>
 
+    <!-- Combo/Sauce Modal -->
     <div id="combo-sauce-modal" class="modal-overlay section-hidden">
         <div class="modal-content">
             <h3 id="modal-title" class="font-bebas text-4xl gradient-text mb-6 text-center">Customize Your Meal</h3>
@@ -233,13 +241,15 @@
                             <button class="combo-type-btn font-bebas text-lg py-2 px-4 rounded-full bg-gray-700 text-white hover:bg-gray-600 transition-colors duration-300" data-combo-select-type="yogurt">Greek Yogurt</button>
                         </div>
                     </div>
-                    <div id="modal-shake-selector" class="mb-4">
-                        <label class="font-bold text-gray-300 block mb-2">Select Your Protein Shake:</label>
-                        <select id="modal-shake-select" class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"></select>
+                    <div id="modal-shake-selector" class="mb-4 flex items-center">
+                        <label class="font-bold text-gray-300 block mb-2 mr-2">Select Your Protein Shake:</label>
+                        <select id="modal-shake-select" class="flex-grow p-2 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"></select>
+                        <img id="modal-shake-image" src="" alt="Selected Shake" class="modal-image-preview ml-4 section-hidden">
                     </div>
-                    <div id="modal-yogurt-selector" class="mb-4 section-hidden">
-                        <label class="font-bold text-gray-300 block mb-2">Select Your Greek Yogurt:</label>
-                        <select id="modal-yogurt-select" class="w-full p-2 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"></select>
+                    <div id="modal-yogurt-selector" class="mb-4 flex items-center section-hidden">
+                        <label class="font-bold text-gray-300 block mb-2 mr-2">Select Your Greek Yogurt:</label>
+                        <select id="modal-yogurt-select" class="flex-grow p-2 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"></select>
+                        <img id="modal-yogurt-image" src="" alt="Selected Yogurt" class="modal-image-preview ml-4 section-hidden">
                     </div>
                 </div>
             </div>
@@ -247,7 +257,8 @@
             <div id="modal-sauce-step" class="section-hidden">
                 <p class="text-gray-300 mb-4 text-center">Select your sauces (First one free, then $1.50 each extra):</p>
                 <div id="modal-sauce-options" class="grid grid-cols-2 gap-4">
-                    </div>
+                    <!-- Sauce checkboxes will be rendered here -->
+                </div>
             </div>
             
             <div class="flex justify-between items-center mt-6">
@@ -297,13 +308,14 @@
                 { id: 5, name: "Spicy Flex Sriracha Swirl", desc: "A creamy, spicy swirl for those who like extra heat.", price: 1.00, macros: { P: 1, C: 4, F: 0.6, Cal: 22 } }
             ],
             proteinShakes: [
-                { id: 101, name: "Fairlife Core Power Vanilla", brand: "Fairlife", price: 4.99, desc: "Classic vanilla, high protein, lactose-free.", macros: { P: 42, C: 10, F: 2.5, Cal: 230 } },
-                { id: 102, name: "Fairlife Core Power Chocolate", brand: "Fairlife", price: 4.99, desc: "Rich chocolate, high protein, lactose-free.", macros: { P: 42, C: 12, F: 3, Cal: 250 } },
-                { id: 103, name: "ON Gold Standard Strawberry", brand: "Optimum Nutrition", price: 4.75, desc: "Fruity and lean, post-workout fuel.", macros: { P: 24, C: 3, F: 1.5, Cal: 130 } }
+                { id: 100, name: "Bicep Guys Protein Shake", brand: "Bicep Guys", price: 5.50, desc: "Our signature blend for maximum recovery and growth!", imageUrl: "images/bicep-guys-shake.png", macros: { P: 50, C: 8, F: 1.5, Cal: 250 } }, // New Bicep Guys Shake
+                { id: 101, name: "Fairlife Core Power Vanilla", brand: "Fairlife", price: 4.99, desc: "Classic vanilla, high protein, lactose-free.", imageUrl: "images/fairlife-vanilla.png", macros: { P: 42, C: 10, F: 2.5, Cal: 230 } },
+                { id: 102, name: "Fairlife Core Power Chocolate", brand: "Fairlife", price: 4.99, desc: "Rich chocolate, high protein, lactose-free.", imageUrl: "images/fairlife-chocolate.png", macros: { P: 42, C: 12, F: 3, Cal: 250 } },
+                { id: 103, name: "ON Gold Standard Strawberry", brand: "Optimum Nutrition", price: 4.75, desc: "Fruity and lean, post-workout fuel.", imageUrl: "images/on-strawberry.png", macros: { P: 24, C: 3, F: 1.5, Cal: 130 } }
             ],
             greekYogurts: [
-                { id: 201, name: "Chobani Plain 0% Fat", brand: "Chobani", price: 2.50, desc: "Pure, high-protein, versatile.", macros: { P: 15, C: 10, F: 0, Cal: 100 } },
-                { id: 202, name: "Chobani Mixed Berry", brand: "Chobani", price: 2.75, desc: "Fruity and flavorful, grab-and-go.", macros: { P: 12, C: 18, F: 0, Cal: 120 } }
+                { id: 201, name: "Chobani Plain 0% Fat", brand: "Chobani", price: 2.50, desc: "Pure, high-protein, versatile.", imageUrl: "images/chobani-plain.png", macros: { P: 15, C: 10, F: 0, Cal: 100 } },
+                { id: 202, name: "Chobani Mixed Berry", brand: "Chobani", price: 2.75, desc: "Fruity and flavorful, grab-and-go.", imageUrl: "images/chobani-berry.png", macros: { P: 12, C: 18, F: 0, Cal: 120 } }
             ],
             zeroSodas: [
                 { id: 301, name: "Coca-Cola Zero Sugar", price: 2.25, desc: "Classic taste, zero sugar.", macros: { P: 0, C: 0, F: 0, Cal: 0 } },
@@ -364,6 +376,8 @@
             const modalYogurtSelector = document.getElementById('modal-yogurt-selector');
             const modalShakeSelect = document.getElementById('modal-shake-select');
             const modalYogurtSelect = document.getElementById('modal-yogurt-select');
+            const modalShakeImage = document.getElementById('modal-shake-image');
+            const modalYogurtImage = document.getElementById('modal-yogurt-image');
             const modalSauceOptions = document.getElementById('modal-sauce-options');
             const modalBackBtn = document.getElementById('modal-back-btn');
             const modalNextBtn = document.getElementById('modal-next-btn');
@@ -506,43 +520,33 @@
             function getMacros(item) {
                 let p = 0, c = 0, f = 0, cal = 0;
 
-                if (item.type === 'kebab') {
-                    const kebabMacros = proteinMacros[item.protein]?.[item.size] || { P: 0, C: 0, F: 0, Cal: 0 };
-                    p += kebabMacros.P;
-                    c += kebabMacros.C;
-                    f += kebabMacros.F;
-                    cal += kebabMacros.Cal;
-                    // Add base sides for each kebab
-                    p += baseSideMacros.P;
-                    c += baseSideMacros.C;
-                    f += baseSideMacros.F;
-                    cal += baseSideMacros.Cal;
-                } else if (item.type === 'combo') {
-                    // Combos have their own calculated macros based on components
+                if (item.type === 'kebab' || item.type === 'combo') { // Kebab or Combo starts with base kebab + sides
                     const kebabMacros = proteinMacros[item.kebabProtein]?.[item.kebabSize] || { P: 0, C: 0, F: 0, Cal: 0 };
                     p += kebabMacros.P + baseSideMacros.P;
                     c += kebabMacros.C + baseSideMacros.C;
                     f += kebabMacros.F + baseSideMacros.F;
                     cal += kebabMacros.Cal + baseSideMacros.Cal;
 
-                    if (item.comboItemType === 'shake') {
-                        const shake = menuData.proteinShakes.find(s => s.id === item.comboItemId);
-                        if (shake) {
-                            p += shake.macros.P;
-                            c += shake.macros.C;
-                            f += shake.macros.F;
-                            cal += shake.macros.Cal;
-                        }
-                    } else if (item.comboItemType === 'yogurt') {
-                        const yogurt = menuData.greekYogurts.find(y => y.id === item.comboItemId);
-                        if (yogurt) {
-                            p += yogurt.macros.P;
-                            c += yogurt.macros.C;
-                            f += yogurt.macros.F;
-                            cal += yogurt.macros.Cal;
+                    if (item.type === 'combo') {
+                        if (item.comboItemType === 'shake') {
+                            const shake = menuData.proteinShakes.find(s => s.id === item.comboItemId);
+                            if (shake) {
+                                p += shake.macros.P;
+                                c += shake.macros.C;
+                                f += shake.macros.F;
+                                cal += shake.macros.Cal;
+                            }
+                        } else if (item.comboItemType === 'yogurt') {
+                            const yogurt = menuData.greekYogurts.find(y => y.id === item.comboItemId);
+                            if (yogurt) {
+                                p += yogurt.macros.P;
+                                c += yogurt.macros.C;
+                                f += yogurt.macros.F;
+                                cal += yogurt.macros.Cal;
+                            }
                         }
                     }
-                    // Add sauce macros from combo details (only for free/included sauces)
+                    // Add sauce macros from combo details (all sauces contribute macros)
                     item.comboSauces.forEach(sauceId => {
                         const sauce = menuData.sauces.find(s => s.id === sauceId);
                         if (sauce) {
@@ -591,15 +595,20 @@
             }
 
             function addToCart(item) {
-                const existingItemIndex = cart.findIndex(cartItem => 
-                    cartItem.id === item.id && 
-                    cartItem.protein === item.protein && 
-                    cartItem.size === item.size &&
-                    cartItem.type === item.type &&
-                    cartItem.comboId === item.comboId &&
-                    JSON.stringify(cartItem.comboSauces) === JSON.stringify(item.comboSauces) // Check sauces for combo uniqueness
-                );
+                // For main kebabs and combos, we treat each customization as a unique item
+                // For standalone sides, we can group them
+                let existingItemIndex = -1;
 
+                if (item.type === 'kebab' || item.type === 'combo') {
+                    // Always add as new unique item if it's a kebab or combo, as customizations are complex
+                    existingItemIndex = -1;
+                } else {
+                    // For simple sides (shake, yogurt, soda, sauce), check if identical item exists
+                    existingItemIndex = cart.findIndex(cartItem => 
+                        cartItem.id === item.id && cartItem.type === item.type
+                    );
+                }
+                
                 if (existingItemIndex > -1) {
                     cart[existingItemIndex].quantity++;
                 } else {
@@ -621,7 +630,7 @@
                 let totalP = 0, totalC = 0, totalF = 0, totalCal = 0;
 
                 if (cart.length === 0) {
-                    checkoutItemsDiv.innerHTML = '<p class="text-center text-gray-600">Your cart is empty.</p>';
+                    checkoutItemsDiv.innerHTML = '<p class="text-center text-gray-600">Your cart is empty. Nothing to checkout!</p>';
                 } else {
                     cart.forEach(item => {
                         const itemElement = document.createElement('p');
@@ -661,64 +670,60 @@
             }
 
             // Modal Management
-            let currentSelectedKebab = null; // Stores the kebab details when 'Add to Cart' is clicked
-            let isComboSelected = false; // Whether the user chose to make it a combo in the modal
-            let selectedComboItem = null; // Stores the specific shake/yogurt selected for combo
-            let selectedSauces = []; // Stores the IDs of selected sauces from the modal
+            // currentKebabForCustomization, selectedComboItem, selectedSauces declared globally
+            let currentModalStep = 1; // 1 for combo, 2 for sauce
 
             function showModalStep(step) {
-                // Hide all steps and navigation buttons first
+                currentModalStep = step;
                 modalComboStep.classList.add('section-hidden');
                 modalSauceStep.classList.add('section-hidden');
                 modalBackBtn.classList.add('section-hidden');
                 modalNextBtn.classList.add('section-hidden');
                 modalAddFinalBtn.classList.add('section-hidden');
-                
+
                 if (step === 1) { // Combo step
                     modalTitle.textContent = "Customize Your Meal";
                     modalComboStep.classList.remove('section-hidden');
                     modalNextBtn.classList.remove('section-hidden');
-                    // Ensure 'No Thanks' is selected by default unless 'Yes' was clicked before
-                    if (isComboSelected) {
-                        modalComboYesBtn.classList.add('selected-btn');
-                        modalComboNoBtn.classList.remove('selected-btn');
-                        comboOptionsContainer.classList.remove('section-hidden');
-                        // Ensure correct combo type button is visually selected
-                        const currentComboType = selectedComboItem ? selectedComboItem.type : 'shake'; // Default to shake if nothing selected
-                        document.querySelectorAll('.combo-type-btn').forEach(btn => {
-                            if (btn.dataset.comboSelectType === currentComboType) {
-                                btn.classList.add('selected-btn');
-                                if (currentComboType === 'shake') modalShakeSelector.classList.remove('section-hidden');
-                                else modalYogurtSelector.classList.remove('section-hidden');
-                            } else {
-                                btn.classList.remove('selected-btn');
-                                if (btn.dataset.comboSelectType === 'shake') modalShakeSelector.classList.add('section-hidden');
-                                else modalYogurtSelector.classList.add('section-hidden');
-                            }
-                        });
-                    } else {
-                        modalComboNoBtn.classList.add('selected-btn');
-                        modalComboYesBtn.classList.remove('selected-btn');
-                        comboOptionsContainer.classList.add('section-hidden');
-                        // Reset combo item selection to default first available shake
-                        if (menuData.proteinShakes.length > 0) {
-                            modalShakeSelect.value = menuData.proteinShakes[0].id;
-                            selectedComboItem = { type: 'shake', id: menuData.proteinShakes[0].id };
-                        }
-                         // Visually ensure shake is default combo type
-                        document.querySelector('.combo-type-btn[data-combo-select-type="shake"]').classList.add('selected-btn');
-                        document.querySelector('.combo-type-btn[data-combo-select-type="yogurt"]').classList.remove('selected-btn');
-                        modalShakeSelector.classList.remove('section-hidden');
-                        modalYogurtSelector.classList.add('section-hidden');
-                    }
+                    // Reset combo choice for new kebab
+                    isComboSelected = false;
+                    selectedComboItem = null;
+                    modalComboNoBtn.classList.add('selected-btn');
+                    modalComboYesBtn.classList.remove('selected-btn');
+                    comboOptionsContainer.classList.add('section-hidden'); // Initially hidden
 
+                    // Ensure combo type buttons are reset to default visual and selected combo item
+                    document.querySelectorAll('.combo-type-btn').forEach((btn, index) => {
+                        btn.classList.remove('selected-btn');
+                        if (index === 0) btn.classList.add('selected-btn'); // Default to shake visually
+                    });
+                    modalShakeSelector.classList.remove('section-hidden'); // Show shake selector by default
+                    modalYogurtSelector.classList.add('section-hidden');
+
+                    // Set default selectedComboItem to first shake/yogurt if available
+                    if (menuData.proteinShakes.length > 0) {
+                        modalShakeSelect.value = menuData.proteinShakes[0].id;
+                        modalShakeImage.src = menuData.proteinShakes[0].imageUrl || '';
+                        modalShakeImage.classList.remove('section-hidden');
+                        selectedComboItem = { type: 'shake', id: menuData.proteinShakes[0].id };
+                    } else {
+                         modalShakeImage.classList.add('section-hidden');
+                    }
+                    if (menuData.greekYogurts.length > 0) {
+                        modalYogurtSelect.value = menuData.greekYogurts[0].id;
+                        modalYogurtImage.src = menuData.greekYogurts[0].imageUrl || '';
+                        modalYogurtImage.classList.remove('section-hidden');
+                    } else {
+                        modalYogurtImage.classList.add('section-hidden');
+                    }
+                    
                 } else if (step === 2) { // Sauce step
                     modalTitle.textContent = "Choose Your Sauces";
                     modalSauceStep.classList.remove('section-hidden');
                     modalBackBtn.classList.remove('section-hidden');
                     modalAddFinalBtn.classList.remove('section-hidden');
                     renderSauceOptionsInModal();
-                    // Pre-check previously selected sauces if any
+                    // Pre-check previously selected sauces if any (from last time modal was open)
                     modalSauceOptions.querySelectorAll('.sauce-checkbox').forEach(checkbox => {
                         if (selectedSauces.includes(parseInt(checkbox.dataset.sauceId))) {
                             checkbox.checked = true;
@@ -727,25 +732,13 @@
                 }
             }
 
-            function resetModal() {
+            function resetModalFullState() {
                 comboSauceModal.classList.add('section-hidden');
                 currentKebabForCustomization = null;
                 isComboSelected = false;
                 selectedComboItem = null;
                 selectedSauces = [];
-                // Reset UI elements to default state
-                modalComboYesBtn.classList.remove('selected-btn');
-                modalComboNoBtn.classList.add('selected-btn');
-                comboOptionsContainer.classList.add('section-hidden');
-                modalShakeSelector.classList.add('section-hidden');
-                modalYogurtSelector.classList.add('section-hidden');
-                document.querySelectorAll('.combo-type-btn').forEach((btn, index) => {
-                    btn.classList.remove('selected-btn');
-                    if (index === 0) btn.classList.add('selected-btn');
-                });
-                // Reset select dropdowns to first option
-                if (modalShakeSelect.options.length > 0) modalShakeSelect.selectedIndex = 0;
-                if (modalYogurtSelect.options.length > 0) modalYogurtSelect.selectedIndex = 0;
+                currentModalStep = 1; // Reset to first step for next time
             }
 
             function renderSauceOptionsInModal() {
@@ -782,7 +775,7 @@
                 const price = menuData.prices[selectedProtein]?.[selectedSize];
 
                 if (price === undefined) {
-                    alert('Please select protein and size for your kebab.');
+                    alert('Please select protein and size for your kebab before adding to cart.');
                     return;
                 }
 
@@ -794,21 +787,9 @@
                     price: price
                 };
                 
-                resetModal(); // Resets all modal state and hides it
+                resetModalFullState(); // Always reset state when opening for a new kebab
                 comboSauceModal.classList.remove('section-hidden'); // Show the modal overlay
-                
-                // Ensure modal combo selectors are populated correctly
-                modalShakeSelect.innerHTML = menuData.proteinShakes.map(shake => `<option value="${shake.id}">${shake.name} - $${shake.price.toFixed(2)}</option>`).join('');
-                modalYogurtSelect.innerHTML = menuData.greekYogurts.map(yogurt => `<option value="${yogurt.id}">${yogurt.name} - $${yogurt.price.toFixed(2)}</option>`).join('');
-
-                // Set default combo item selection to the first shake
-                if (menuData.proteinShakes.length > 0) {
-                    modalShakeSelect.value = menuData.proteinShakes[0].id;
-                    selectedComboItem = { type: 'shake', id: menuData.proteinShakes[0].id };
-                }
-
-
-                showModalStep(1); // Show the first step of the modal (combo choice)
+                showModalStep(1); // Start at the combo choice step
             });
             
             filterContainer.addEventListener('click', e => {
@@ -894,23 +875,27 @@
             navAboutBtn.addEventListener('click', () => showSection('about'));
             navCartBtn.addEventListener('click', () => showSection('cart'));
 
-            // Modal Logic
+            // Modal Combo Step Logic
             modalComboYesBtn.addEventListener('click', () => {
                 isComboSelected = true;
                 modalComboYesBtn.classList.add('selected-btn');
                 modalComboNoBtn.classList.remove('selected-btn');
                 comboOptionsContainer.classList.remove('section-hidden');
-                // Ensure initial combo item is selected when 'Yes' is clicked
+                // Auto-select and show the default combo type (shake)
                 const defaultComboTypeBtn = document.querySelector('#modal-combo-step .combo-type-btn[data-combo-select-type="shake"]');
                 if (defaultComboTypeBtn) defaultComboTypeBtn.click(); // Simulate click to set visibility and selectedComboItem
             });
 
             modalComboNoBtn.addEventListener('click', () => {
                 isComboSelected = false;
+                selectedComboItem = null; // No combo item selected
                 modalComboNoBtn.classList.add('selected-btn');
                 modalComboYesBtn.classList.remove('selected-btn');
                 comboOptionsContainer.classList.add('section-hidden');
-                selectedComboItem = null; // No combo item selected
+                modalShakeSelector.classList.add('section-hidden'); // Hide selectors
+                modalYogurtSelector.classList.add('section-hidden');
+                modalShakeImage.classList.add('section-hidden');
+                modalYogurtImage.classList.add('section-hidden');
             });
 
             document.querySelectorAll('.combo-type-btn').forEach(btn => {
@@ -920,29 +905,61 @@
                     const type = event.target.dataset.comboSelectType;
                     modalShakeSelector.classList.add('section-hidden');
                     modalYogurtSelector.classList.add('section-hidden');
+                    modalShakeImage.classList.add('section-hidden');
+                    modalYogurtImage.classList.add('section-hidden');
+
                     if (type === 'shake') {
                         modalShakeSelector.classList.remove('section-hidden');
                         selectedComboItem = { type: 'shake', id: parseInt(modalShakeSelect.value) };
+                        const shake = menuData.proteinShakes.find(s => s.id === selectedComboItem.id);
+                        if (shake && shake.imageUrl) {
+                            modalShakeImage.src = shake.imageUrl;
+                            modalShakeImage.classList.remove('section-hidden');
+                        } else {
+                            modalShakeImage.classList.add('section-hidden');
+                        }
                     } else if (type === 'yogurt') {
                         modalYogurtSelector.classList.remove('section-hidden');
                         selectedComboItem = { type: 'yogurt', id: parseInt(modalYogurtSelect.value) };
+                        const yogurt = menuData.greekYogurts.find(y => y.id === selectedComboItem.id);
+                        if (yogurt && yogurt.imageUrl) {
+                            modalYogurtImage.src = yogurt.imageUrl;
+                            modalYogurtImage.classList.remove('section-hidden');
+                        } else {
+                            modalYogurtImage.classList.add('section-hidden');
+                        }
                     }
                 });
             });
 
             modalShakeSelect.addEventListener('change', () => {
                 selectedComboItem = { type: 'shake', id: parseInt(modalShakeSelect.value) };
+                const shake = menuData.proteinShakes.find(s => s.id === selectedComboItem.id);
+                if (shake && shake.imageUrl) {
+                    modalShakeImage.src = shake.imageUrl;
+                    modalShakeImage.classList.remove('section-hidden');
+                } else {
+                    modalShakeImage.classList.add('section-hidden');
+                }
             });
+
             modalYogurtSelect.addEventListener('change', () => {
                 selectedComboItem = { type: 'yogurt', id: parseInt(modalYogurtSelect.value) };
+                const yogurt = menuData.greekYogurts.find(y => y.id === selectedComboItem.id);
+                if (yogurt && yogurt.imageUrl) {
+                    modalYogurtImage.src = yogurt.imageUrl;
+                    modalYogurtImage.classList.remove('section-hidden');
+                } else {
+                    modalYogurtImage.classList.add('section-hidden');
+                }
             });
 
             modalNextBtn.addEventListener('click', () => {
-                showModalStep(2); // Go to sauce step
+                showModalStep(currentModalStep + 1); // Advance step in modal
             });
 
             modalBackBtn.addEventListener('click', () => {
-                showModalStep(1); // Go back to combo step
+                showModalStep(currentModalStep - 1); // Go back a step in modal
             });
 
             modalAddFinalBtn.addEventListener('click', () => {
@@ -1037,7 +1054,8 @@
                     P: itemP, C: itemC, F: itemF, Cal: itemCal // Final calculated macros for this item
                 });
 
-                resetModal();
+                resetModalFullState(); // Close and reset modal
+                showSection('cart'); // Redirect to cart page after adding
             });
 
             // Initial render and display
