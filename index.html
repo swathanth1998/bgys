@@ -65,38 +65,6 @@
         .text-card-dark {
             color: #333333; /* Dark text for cards */
         }
-
-        /* Modal specific styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.75);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal-content {
-            background-color: #1a1a1a;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            width: 90%;
-            max-width: 600px;
-            max-height: 90vh;
-            overflow-y: auto;
-            color: #f1f1f1;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        .modal-image-preview {
-            width: 100px; /* Fixed width for modal images */
-            height: 100px; /* Fixed height for modal images */
-            object-fit: contain; /* Ensure image fits */
-            margin-left: 1rem;
-            border-radius: 0.25rem;
-        }
     </style>
 </head>
 <body>
@@ -223,53 +191,6 @@
         <p>&copy; 2025 Bicep Guys. All Rights Reserved.</p>
     </footer>
 
-    <!-- Combo/Sauce Modal -->
-    <div id="combo-sauce-modal" class="modal-overlay section-hidden">
-        <div class="modal-content">
-            <h3 id="modal-title" class="font-bebas text-4xl gradient-text mb-6 text-center">Customize Your Meal</h3>
-            <div id="modal-combo-step">
-                <p class="text-gray-300 mb-4 text-center">Would you like to make this a combo?</p>
-                <div class="flex justify-center gap-4 mb-6">
-                    <button id="modal-combo-yes" class="font-bebas text-xl py-2 px-6 rounded-full bg-gray-700 text-white hover:bg-gray-600 transition-colors duration-300">Yes, Make it a Combo!</button>
-                    <button id="modal-combo-no" class="font-bebas text-xl py-2 px-6 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 selected-btn">No Thanks, Just the Kebab</button>
-                </div>
-                <div id="combo-options-container" class="space-y-4 section-hidden">
-                    <div class="mb-4">
-                        <label class="font-bold text-gray-300 block mb-2">Choose Your Combo Item:</label>
-                        <div class="flex flex-wrap gap-3">
-                            <button class="combo-type-btn font-bebas text-lg py-2 px-4 rounded-full bg-gray-700 text-white hover:bg-gray-600 transition-colors duration-300 selected-btn" data-combo-select-type="shake">Protein Shake</button>
-                            <button class="combo-type-btn font-bebas text-lg py-2 px-4 rounded-full bg-gray-700 text-white hover:bg-gray-600 transition-colors duration-300" data-combo-select-type="yogurt">Greek Yogurt</button>
-                        </div>
-                    </div>
-                    <div id="modal-shake-selector" class="mb-4 flex items-center">
-                        <label class="font-bold text-gray-300 block mb-2 mr-2">Select Your Protein Shake:</label>
-                        <select id="modal-shake-select" class="flex-grow p-2 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"></select>
-                        <img id="modal-shake-image" src="" alt="Selected Shake" class="modal-image-preview ml-4 section-hidden">
-                    </div>
-                    <div id="modal-yogurt-selector" class="mb-4 flex items-center section-hidden">
-                        <label class="font-bold text-gray-300 block mb-2 mr-2">Select Your Greek Yogurt:</label>
-                        <select id="modal-yogurt-select" class="flex-grow p-2 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"></select>
-                        <img id="modal-yogurt-image" src="" alt="Selected Yogurt" class="modal-image-preview ml-4 section-hidden">
-                    </div>
-                </div>
-            </div>
-
-            <div id="modal-sauce-step" class="section-hidden">
-                <p class="text-gray-300 mb-4 text-center">Select your sauces (First one free, then $1.50 each extra):</p>
-                <div id="modal-sauce-options" class="grid grid-cols-2 gap-4">
-                    <!-- Sauce checkboxes will be rendered here -->
-                </div>
-            </div>
-            
-            <div class="flex justify-between items-center mt-6">
-                <button id="modal-back-btn" class="font-bebas text-xl py-2 px-6 rounded-full bg-gray-600 text-white hover:bg-gray-500 transition-colors duration-300 section-hidden">Back</button>
-                <button id="modal-next-btn" class="font-bebas text-xl py-2 px-6 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300">Next</button>
-                <button id="modal-add-final-btn" class="font-bebas text-xl py-2 px-6 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 section-hidden">Add Final Meal to Cart</button>
-            </div>
-        </div>
-    </div>
-
-
     <script>
         // Macro data for base components (per serving)
         const baseSideMacros = { P: 8, C: 50, F: 2, Cal: 240 }; // Small cup of rice + bowl of power packed veggies
@@ -288,11 +209,11 @@
                 { id: 3, name: "Tandoori Titan", desc: "Yogurt, turmeric, ginger, garam masala.", proteins: ["Chicken", "Steak", "Lamb", "Plant-Based"], imageUrl: "images/tandoori-titan.png" },
                 { id: 4, name: "Seoul Surge", desc: "Korean BBQ Fire: Gochujang, sesame, scallion, honey glaze.", proteins: ["Chicken", "Steak", "Lamb", "Plant-Based"], imageUrl: "images/seoul-surge.png" },
                 { id: 5, name: "Zesty Zenith", desc: "Zesty Herb & Citrus: Parsley, cilantro, orange, lemon, chili flakes.", proteins: ["Chicken", "Steak", "Lamb", "Plant-Based"], imageUrl: "images/zesty-zenith.png" },
-                { id: 6, name: "Island Inferno", desc: "Spicy Jamaican Jerk: Allspice, thyme, Scotch bonnet, cinnamon.", proteins: ["Chicken", "Steak", "Lamb", "Plant-Based"], imageUrl: "images/island-inferno.png" }, // Adjusted to include Plant-Based & Lamb
+                { id: 6, name: "Island Inferno", desc: "Spicy Jamaican Jerk: Allspice, thyme, Scotch bonnet, cinnamon.", proteins: ["Chicken", "Steak", "Lamb", "Plant-Based"], imageUrl: "images/island-inferno.png" },
                 { id: 7, name: "Golden Gains", desc: "Honey Mustard Crunch: Honey, Dijon, cracked pepper, toasted seeds.", proteins: ["Chicken", "Steak", "Lamb", "Plant-Based"], imageUrl: "images/golden-gains.png" },
                 { id: 8, name: "Garlic Gauntlet", desc: "Roasted garlic, parmesan, Italian herbs.", proteins: ["Chicken", "Steak", "Lamb", "Plant-Based"], imageUrl: "images/garlic-gauntlet.png" },
                 { id: 9, name: "Teriyaki Triumph", desc: "Teriyaki Ginger: Soy, ginger, pineapple, green onion.", proteins: ["Chicken", "Steak", "Lamb", "Plant-Based"], imageUrl: "images/teriyaki-triumph.png" },
-                { id: 10, name: "Buffalo Beast", desc: "Buffalo Sriracha: Hot sauce, sriracha, celery seed, blue cheese drizzle.", proteins: ["Chicken"], imageUrl: "images/buffalo-beast.png" } // Buffalo typically chicken
+                { id: 10, name: "Buffalo Beast", desc: "Buffalo Sriracha: Hot sauce, sriracha, celery seed, blue cheese drizzle.", proteins: ["Chicken"], imageUrl: "images/buffalo-beast.png" }
             ],
             prices: {
                 "Chicken": { "Mini Muscle": 10.99, "Gainz Grill": 14.99, "Bicep Beast": 18.99 },
@@ -330,9 +251,6 @@
         };
 
         let cart = [];
-        let currentKebabForCustomization = null; // Store kebab info when modal opens
-        let selectedComboItem = null; // Stores selected shake/yogurt in modal
-        let selectedSauces = []; // Stores selected sauces in modal
 
         document.addEventListener('DOMContentLoaded', () => {
             const menuSection = document.getElementById('menu-section');
@@ -364,24 +282,6 @@
             const checkoutTotalFSpan = document.getElementById('checkout-total-f');
             const checkoutTotalCalSpan = document.getElementById('checkout-total-cal');
             const checkoutForm = document.getElementById('checkout-form');
-
-            const comboSauceModal = document.getElementById('combo-sauce-modal');
-            const modalTitle = document.getElementById('modal-title');
-            const modalComboStep = document.getElementById('modal-combo-step');
-            const modalSauceStep = document.getElementById('modal-sauce-step');
-            const modalComboYesBtn = document.getElementById('modal-combo-yes');
-            const modalComboNoBtn = document.getElementById('modal-combo-no');
-            const comboOptionsContainer = document.getElementById('combo-options-container');
-            const modalShakeSelector = document.getElementById('modal-shake-selector');
-            const modalYogurtSelector = document.getElementById('modal-yogurt-selector');
-            const modalShakeSelect = document.getElementById('modal-shake-select');
-            const modalYogurtSelect = document.getElementById('modal-yogurt-select');
-            const modalShakeImage = document.getElementById('modal-shake-image');
-            const modalYogurtImage = document.getElementById('modal-yogurt-image');
-            const modalSauceOptions = document.getElementById('modal-sauce-options');
-            const modalBackBtn = document.getElementById('modal-back-btn');
-            const modalNextBtn = document.getElementById('modal-next-btn');
-            const modalAddFinalBtn = document.getElementById('modal-add-final-btn');
 
             const allProteins = ["All", ...new Set(menuData.kebabs.flatMap(k => k.proteins))];
 
@@ -458,6 +358,7 @@
                     <div class="bg-gray-100 rounded-lg p-4 flex flex-col justify-between items-center border border-gray-200">
                         <h4 class="font-bebas text-2xl text-yellow-600">${shake.name}</h4>
                         <p class="text-gray-700 text-sm mb-2">${shake.brand} - ${shake.desc}</p>
+                        ${shake.imageUrl ? `<img src="${shake.imageUrl}" alt="${shake.name}" class="w-24 h-24 object-contain mb-2">` : ''}
                         <p class="font-bold text-lg text-gray-800">$${shake.price.toFixed(2)}</p>
                         <button class="add-side-to-cart-btn font-bebas text-lg py-1 px-4 mt-2 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full" data-item-type="shake" data-item-id="${shake.id}" data-item-name="${shake.name}" data-item-price="${shake.price}">Add</button>
                     </div>
@@ -468,6 +369,7 @@
                     <div class="bg-gray-100 rounded-lg p-4 flex flex-col justify-between items-center border border-gray-200">
                         <h4 class="font-bebas text-2xl text-yellow-600">${yogurt.name}</h4>
                         <p class="text-gray-700 text-sm mb-2">${yogurt.brand} - ${yogurt.desc}</p>
+                         ${yogurt.imageUrl ? `<img src="${yogurt.imageUrl}" alt="${yogurt.name}" class="w-24 h-24 object-contain mb-2">` : ''}
                         <p class="font-bold text-lg text-gray-800">$${yogurt.price.toFixed(2)}</p>
                         <button class="add-side-to-cart-btn font-bebas text-lg py-1 px-4 mt-2 rounded-full bg-yellow-500 text-black hover:bg-yellow-400 transition-colors duration-300 w-full" data-item-type="yogurt" data-item-id="${yogurt.id}" data-item-name="${yogurt.name}" data-item-price="${yogurt.price}">Add</button>
                     </div>
@@ -520,90 +422,36 @@
             function getMacros(item) {
                 let p = 0, c = 0, f = 0, cal = 0;
 
-                if (item.type === 'kebab' || item.type === 'combo') { // Kebab or Combo starts with base kebab + sides
-                    const kebabMacros = proteinMacros[item.kebabProtein]?.[item.kebabSize] || { P: 0, C: 0, F: 0, Cal: 0 };
-                    p += kebabMacros.P + baseSideMacros.P;
-                    c += kebabMacros.C + baseSideMacros.C;
-                    f += kebabMacros.F + baseSideMacros.F;
-                    cal += kebabMacros.Cal + baseSideMacros.Cal;
-
-                    if (item.type === 'combo') {
-                        if (item.comboItemType === 'shake') {
-                            const shake = menuData.proteinShakes.find(s => s.id === item.comboItemId);
-                            if (shake) {
-                                p += shake.macros.P;
-                                c += shake.macros.C;
-                                f += shake.macros.F;
-                                cal += shake.macros.Cal;
-                            }
-                        } else if (item.comboItemType === 'yogurt') {
-                            const yogurt = menuData.greekYogurts.find(y => y.id === item.comboItemId);
-                            if (yogurt) {
-                                p += yogurt.macros.P;
-                                c += yogurt.macros.C;
-                                f += yogurt.macros.F;
-                                cal += yogurt.macros.Cal;
-                            }
-                        }
-                    }
-                    // Add sauce macros from combo details (all sauces contribute macros)
-                    item.comboSauces.forEach(sauceId => {
-                        const sauce = menuData.sauces.find(s => s.id === sauceId);
-                        if (sauce) {
-                            p += sauce.macros.P;
-                            c += sauce.macros.C;
-                            f += sauce.macros.F;
-                            cal += sauce.macros.Cal;
-                        }
-                    });
-
-                } else if (item.type === 'shake') {
-                    const shake = menuData.proteinShakes.find(s => s.id === item.id);
-                    if (shake) {
-                        p += shake.macros.P;
-                        c += shake.macros.C;
-                        f += shake.macros.F;
-                        cal += shake.macros.Cal;
-                    }
-                } else if (item.type === 'yogurt') {
-                    const yogurt = menuData.greekYogurts.find(y => y.id === item.id);
-                    if (yogurt) {
-                        p += yogurt.macros.P;
-                        c += yogurt.macros.C;
-                        f += yogurt.macros.F;
-                        cal += yogurt.macros.Cal;
-                    }
-                } else if (item.type === 'soda') {
-                    const soda = menuData.zeroSodas.find(s => s.id === item.id);
-                    if (soda) { // Sodas are mostly 0s, but included for completeness
-                        p += soda.macros.P;
-                        c += soda.macros.C;
-                        f += soda.macros.F;
-                        cal += soda.macros.Cal;
-                    }
-                } else if (item.type === 'sauce') {
-                    const sauce = menuData.sauces.find(s => s.id === item.id);
-                    if (sauce) {
-                        p += sauce.macros.P;
-                        c += sauce.macros.C;
-                        f += sauce.macros.F;
-                        cal += sauce.macros.Cal;
-                    }
+                if (item.type === 'kebab') {
+                    const kebabMacros = proteinMacros[item.protein]?.[item.size] || { P: 0, C: 0, F: 0, Cal: 0 };
+                    p += kebabMacros.P;
+                    c += kebabMacros.C;
+                    f += kebabMacros.F;
+                    cal += kebabMacros.Cal;
+                    // Add base sides for each kebab
+                    p += baseSideMacros.P;
+                    c += baseSideMacros.C;
+                    f += baseSideMacros.F;
+                    cal += baseSideMacros.Cal;
+                } else if (item.type === 'shake' || item.type === 'yogurt' || item.type === 'soda' || item.type === 'sauce') {
+                    // For standalone sides, use their own defined macros
+                    p += item.P || 0;
+                    c += item.C || 0;
+                    f += item.F || 0;
+                    cal += item.Cal || 0;
                 }
 
                 return { P: p, C: c, F: f, Cal: cal };
             }
 
             function addToCart(item) {
-                // For main kebabs and combos, we treat each customization as a unique item
-                // For standalone sides, we can group them
+                // For main kebabs, treat each selection as unique
+                // For standalone sides, group identical items
                 let existingItemIndex = -1;
 
-                if (item.type === 'kebab' || item.type === 'combo') {
-                    // Always add as new unique item if it's a kebab or combo, as customizations are complex
-                    existingItemIndex = -1;
+                if (item.type === 'kebab') {
+                    existingItemIndex = -1; // Always add as new unique item
                 } else {
-                    // For simple sides (shake, yogurt, soda, sauce), check if identical item exists
                     existingItemIndex = cart.findIndex(cartItem => 
                         cartItem.id === item.id && cartItem.type === item.type
                     );
@@ -669,127 +517,35 @@
                 showSection('menu');
             }
 
-            // Modal Management
-            // currentKebabForCustomization, selectedComboItem, selectedSauces declared globally
-            let currentModalStep = 1; // 1 for combo, 2 for sauce
-
-            function showModalStep(step) {
-                currentModalStep = step;
-                modalComboStep.classList.add('section-hidden');
-                modalSauceStep.classList.add('section-hidden');
-                modalBackBtn.classList.add('section-hidden');
-                modalNextBtn.classList.add('section-hidden');
-                modalAddFinalBtn.classList.add('section-hidden');
-
-                if (step === 1) { // Combo step
-                    modalTitle.textContent = "Customize Your Meal";
-                    modalComboStep.classList.remove('section-hidden');
-                    modalNextBtn.classList.remove('section-hidden');
-                    // Reset combo choice for new kebab
-                    isComboSelected = false;
-                    selectedComboItem = null;
-                    modalComboNoBtn.classList.add('selected-btn');
-                    modalComboYesBtn.classList.remove('selected-btn');
-                    comboOptionsContainer.classList.add('section-hidden'); // Initially hidden
-
-                    // Ensure combo type buttons are reset to default visual and selected combo item
-                    document.querySelectorAll('.combo-type-btn').forEach((btn, index) => {
-                        btn.classList.remove('selected-btn');
-                        if (index === 0) btn.classList.add('selected-btn'); // Default to shake visually
-                    });
-                    modalShakeSelector.classList.remove('section-hidden'); // Show shake selector by default
-                    modalYogurtSelector.classList.add('section-hidden');
-
-                    // Set default selectedComboItem to first shake/yogurt if available
-                    if (menuData.proteinShakes.length > 0) {
-                        modalShakeSelect.value = menuData.proteinShakes[0].id;
-                        modalShakeImage.src = menuData.proteinShakes[0].imageUrl || '';
-                        modalShakeImage.classList.remove('section-hidden');
-                        selectedComboItem = { type: 'shake', id: menuData.proteinShakes[0].id };
-                    } else {
-                         modalShakeImage.classList.add('section-hidden');
-                    }
-                    if (menuData.greekYogurts.length > 0) {
-                        modalYogurtSelect.value = menuData.greekYogurts[0].id;
-                        modalYogurtImage.src = menuData.greekYogurts[0].imageUrl || '';
-                        modalYogurtImage.classList.remove('section-hidden');
-                    } else {
-                        modalYogurtImage.classList.add('section-hidden');
-                    }
-                    
-                } else if (step === 2) { // Sauce step
-                    modalTitle.textContent = "Choose Your Sauces";
-                    modalSauceStep.classList.remove('section-hidden');
-                    modalBackBtn.classList.remove('section-hidden');
-                    modalAddFinalBtn.classList.remove('section-hidden');
-                    renderSauceOptionsInModal();
-                    // Pre-check previously selected sauces if any (from last time modal was open)
-                    modalSauceOptions.querySelectorAll('.sauce-checkbox').forEach(checkbox => {
-                        if (selectedSauces.includes(parseInt(checkbox.dataset.sauceId))) {
-                            checkbox.checked = true;
-                        }
-                    });
-                }
-            }
-
-            function resetModalFullState() {
-                comboSauceModal.classList.add('section-hidden');
-                currentKebabForCustomization = null;
-                isComboSelected = false;
-                selectedComboItem = null;
-                selectedSauces = [];
-                currentModalStep = 1; // Reset to first step for next time
-            }
-
-            function renderSauceOptionsInModal() {
-                modalSauceOptions.innerHTML = menuData.sauces.map(sauce => `
-                    <label class="flex items-center bg-gray-700 p-3 rounded-md cursor-pointer hover:bg-gray-600 transition-colors">
-                        <input type="checkbox" class="sauce-checkbox form-checkbox h-5 w-5 text-yellow-500 rounded border-gray-500 focus:ring-yellow-500" data-sauce-id="${sauce.id}">
-                        <span class="ml-2 text-white">${sauce.name} ($${sauce.price.toFixed(2)})</span>
-                    </label>
-                `).join('');
-
-                modalSauceOptions.querySelectorAll('.sauce-checkbox').forEach(checkbox => {
-                    checkbox.addEventListener('change', (event) => {
-                        const sauceId = parseInt(event.target.dataset.sauceId);
-                        if (event.target.checked) {
-                            selectedSauces.push(sauceId);
-                        } else {
-                            selectedSauces = selectedSauces.filter(id => id !== sauceId);
-                        }
-                    });
-                });
-            }
-
             // Event Listeners
             kebabGrid.addEventListener('click', e => {
                 const target = e.target;
                 const card = target.closest('.kebab-card');
 
-                if (!card || !target.classList.contains('add-to-cart-btn')) return;
+                if (!card) return;
 
-                const kebabId = parseInt(card.dataset.kebabId);
-                const selectedKebabData = menuData.kebabs.find(k => k.id === kebabId);
-                const selectedProtein = card.querySelector('.protein-selector .selected-btn').dataset.protein;
-                const selectedSize = card.querySelector('.size-selector .selected-btn').dataset.size;
-                const price = menuData.prices[selectedProtein]?.[selectedSize];
+                if (target.classList.contains('add-to-cart-btn')) {
+                    const kebabId = parseInt(card.dataset.kebabId);
+                    const selectedKebabData = menuData.kebabs.find(k => k.id === kebabId);
+                    const selectedProtein = card.querySelector('.protein-selector .selected-btn').dataset.protein;
+                    const selectedSize = card.querySelector('.size-selector .selected-btn').dataset.size;
+                    const price = menuData.prices[selectedProtein]?.[selectedSize];
 
-                if (price === undefined) {
-                    alert('Please select protein and size for your kebab before adding to cart.');
-                    return;
+                    if (price === undefined) {
+                        alert('Please select protein and size for your kebab before adding to cart.');
+                        return;
+                    }
+
+                    addToCart({
+                        id: `kebab-${kebabId}-${selectedProtein}-${selectedSize}`, // Unique ID for each kebab customization
+                        name: selectedKebabData.name,
+                        price: price,
+                        type: 'kebab',
+                        protein: selectedProtein, // Store for macro calc
+                        size: selectedSize,       // Store for macro calc
+                        details: `${selectedProtein}, ${selectedSize}`
+                    });
                 }
-
-                currentKebabForCustomization = {
-                    id: kebabId,
-                    name: selectedKebabData.name,
-                    protein: selectedProtein,
-                    size: selectedSize,
-                    price: price
-                };
-                
-                resetModalFullState(); // Always reset state when opening for a new kebab
-                comboSauceModal.classList.remove('section-hidden'); // Show the modal overlay
-                showModalStep(1); // Start at the combo choice step
             });
             
             filterContainer.addEventListener('click', e => {
@@ -813,10 +569,15 @@
                     const itemPrice = parseFloat(target.dataset.itemPrice);
 
                     let itemMacros = {P:0,C:0,F:0,Cal:0};
-                    if (itemType === 'sauce') itemMacros = menuData.sauces.find(s => s.id === itemId).macros;
-                    else if (itemType === 'shake') itemMacros = menuData.proteinShakes.find(s => s.id === itemId).macros;
-                    else if (itemType === 'yogurt') itemMacros = menuData.greekYogurts.find(y => y.id === itemId).macros;
-                    else if (itemType === 'soda') itemMacros = menuData.zeroSodas.find(s => s.id === itemId).macros;
+                    if (itemType === 'sauce') {
+                        itemMacros = menuData.sauces.find(s => s.id === itemId).macros;
+                    } else if (itemType === 'shake') {
+                        itemMacros = menuData.proteinShakes.find(s => s.id === itemId).macros;
+                    } else if (itemType === 'yogurt') {
+                        itemMacros = menuData.greekYogurts.find(y => y.id === itemId).macros;
+                    } else if (itemType === 'soda') {
+                        itemMacros = menuData.zeroSodas.find(s => s.id === itemId).macros;
+                    }
 
                     addToCart({
                         id: `${itemType}-${itemId}`,
@@ -875,195 +636,12 @@
             navAboutBtn.addEventListener('click', () => showSection('about'));
             navCartBtn.addEventListener('click', () => showSection('cart'));
 
-            // Modal Combo Step Logic
-            modalComboYesBtn.addEventListener('click', () => {
-                isComboSelected = true;
-                modalComboYesBtn.classList.add('selected-btn');
-                modalComboNoBtn.classList.remove('selected-btn');
-                comboOptionsContainer.classList.remove('section-hidden');
-                // Auto-select and show the default combo type (shake)
-                const defaultComboTypeBtn = document.querySelector('#modal-combo-step .combo-type-btn[data-combo-select-type="shake"]');
-                if (defaultComboTypeBtn) defaultComboTypeBtn.click(); // Simulate click to set visibility and selectedComboItem
-            });
-
-            modalComboNoBtn.addEventListener('click', () => {
-                isComboSelected = false;
-                selectedComboItem = null; // No combo item selected
-                modalComboNoBtn.classList.add('selected-btn');
-                modalComboYesBtn.classList.remove('selected-btn');
-                comboOptionsContainer.classList.add('section-hidden');
-                modalShakeSelector.classList.add('section-hidden'); // Hide selectors
-                modalYogurtSelector.classList.add('section-hidden');
-                modalShakeImage.classList.add('section-hidden');
-                modalYogurtImage.classList.add('section-hidden');
-            });
-
-            document.querySelectorAll('.combo-type-btn').forEach(btn => {
-                btn.addEventListener('click', (event) => {
-                    document.querySelectorAll('.combo-type-btn').forEach(b => b.classList.remove('selected-btn'));
-                    event.target.classList.add('selected-btn');
-                    const type = event.target.dataset.comboSelectType;
-                    modalShakeSelector.classList.add('section-hidden');
-                    modalYogurtSelector.classList.add('section-hidden');
-                    modalShakeImage.classList.add('section-hidden');
-                    modalYogurtImage.classList.add('section-hidden');
-
-                    if (type === 'shake') {
-                        modalShakeSelector.classList.remove('section-hidden');
-                        selectedComboItem = { type: 'shake', id: parseInt(modalShakeSelect.value) };
-                        const shake = menuData.proteinShakes.find(s => s.id === selectedComboItem.id);
-                        if (shake && shake.imageUrl) {
-                            modalShakeImage.src = shake.imageUrl;
-                            modalShakeImage.classList.remove('section-hidden');
-                        } else {
-                            modalShakeImage.classList.add('section-hidden');
-                        }
-                    } else if (type === 'yogurt') {
-                        modalYogurtSelector.classList.remove('section-hidden');
-                        selectedComboItem = { type: 'yogurt', id: parseInt(modalYogurtSelect.value) };
-                        const yogurt = menuData.greekYogurts.find(y => y.id === selectedComboItem.id);
-                        if (yogurt && yogurt.imageUrl) {
-                            modalYogurtImage.src = yogurt.imageUrl;
-                            modalYogurtImage.classList.remove('section-hidden');
-                        } else {
-                            modalYogurtImage.classList.add('section-hidden');
-                        }
-                    }
-                });
-            });
-
-            modalShakeSelect.addEventListener('change', () => {
-                selectedComboItem = { type: 'shake', id: parseInt(modalShakeSelect.value) };
-                const shake = menuData.proteinShakes.find(s => s.id === selectedComboItem.id);
-                if (shake && shake.imageUrl) {
-                    modalShakeImage.src = shake.imageUrl;
-                    modalShakeImage.classList.remove('section-hidden');
-                } else {
-                    modalShakeImage.classList.add('section-hidden');
-                }
-            });
-
-            modalYogurtSelect.addEventListener('change', () => {
-                selectedComboItem = { type: 'yogurt', id: parseInt(modalYogurtSelect.value) };
-                const yogurt = menuData.greekYogurts.find(y => y.id === selectedComboItem.id);
-                if (yogurt && yogurt.imageUrl) {
-                    modalYogurtImage.src = yogurt.imageUrl;
-                    modalYogurtImage.classList.remove('section-hidden');
-                } else {
-                    modalYogurtImage.classList.add('section-hidden');
-                }
-            });
-
-            modalNextBtn.addEventListener('click', () => {
-                showModalStep(currentModalStep + 1); // Advance step in modal
-            });
-
-            modalBackBtn.addEventListener('click', () => {
-                showModalStep(currentModalStep - 1); // Go back a step in modal
-            });
-
-            modalAddFinalBtn.addEventListener('click', () => {
-                let finalPrice = currentKebabForCustomization.price;
-                let finalDetails = `${currentKebabForCustomization.protein}, ${currentKebabForCustomization.size}`;
-                let finalName = currentKebabForCustomization.name;
-                let finalType = 'kebab';
-                let finalKebabProtein = currentKebabForCustomization.protein;
-                let finalKebabSize = currentKebabForCustomization.size;
-                let finalComboItemType = null;
-                let finalComboItemId = null;
-                let finalComboSauces = selectedSauces; // All selected sauces from modal
-
-                // Calculate macros for the main kebab + base sides
-                let itemP = proteinMacros[finalKebabProtein][finalKebabSize].P + baseSideMacros.P;
-                let itemC = proteinMacros[finalKebabProtein][finalKebabSize].C + baseSideMacros.C;
-                let itemF = proteinMacros[finalKebabProtein][finalKebabSize].F + baseSideMacros.F;
-                let itemCal = proteinMacros[finalKebabProtein][finalKebabSize].Cal + baseSideMacros.Cal;
-
-
-                if (isComboSelected && selectedComboItem) {
-                    let comboItem = null;
-                    if (selectedComboItem.type === 'shake') {
-                        comboItem = menuData.proteinShakes.find(s => s.id === selectedComboItem.id);
-                        if(comboItem) {
-                            finalPrice += comboItem.price - menuData.comboDiscounts.shake;
-                            finalDetails += ` + ${comboItem.name}`;
-                            finalName = `${currentKebabForCustomization.name} Combo`;
-                            finalType = 'combo';
-                            finalComboItemType = 'shake';
-                            finalComboItemId = comboItem.id;
-                            itemP += comboItem.macros.P;
-                            itemC += comboItem.macros.C;
-                            itemF += comboItem.macros.F;
-                            itemCal += comboItem.macros.Cal;
-                        }
-                    } else if (selectedComboItem.type === 'yogurt') {
-                        comboItem = menuData.greekYogurts.find(y => y.id === selectedComboItem.id);
-                        if(comboItem) {
-                            finalPrice += comboItem.price - menuData.comboDiscounts.yogurt;
-                            finalDetails += ` + ${comboItem.name}`;
-                            finalName = `${currentKebabForCustomization.name} Combo`;
-                            finalType = 'combo';
-                            finalComboItemType = 'yogurt';
-                            finalComboItemId = comboItem.id;
-                            itemP += comboItem.macros.P;
-                            itemC += comboItem.macros.C;
-                            itemF += comboItem.macros.F;
-                            itemCal += comboItem.macros.Cal;
-                        }
-                    }
-                }
-
-                // Calculate sauce cost: first one is free, subsequent are $1.50
-                let sauceCost = 0;
-                let sauceDetails = '';
-                if (selectedSauces.length > 0) {
-                    if (selectedSauces.length > 1) { // If more than one sauce, charge for extras
-                        sauceCost = (selectedSauces.length - 1) * menuData.sauceExtraCharge;
-                    }
-                    const selectedSauceNames = selectedSauces.map(id => menuData.sauces.find(s => s.id === id)?.name);
-                    sauceDetails = `Sauces: ${selectedSauceNames.join(', ')}`;
-
-                    // Add macros for ALL selected sauces (including the free one)
-                    selectedSauces.forEach(sauceId => {
-                        const sauce = menuData.sauces.find(s => s.id === sauceId);
-                        if (sauce) {
-                            itemP += sauce.macros.P;
-                            itemC += sauce.macros.C;
-                            itemF += sauce.macros.F;
-                            itemCal += sauce.macros.Cal;
-                        }
-                    });
-                }
-                finalPrice += sauceCost;
-                if (sauceDetails) {
-                    finalDetails += ` (${sauceDetails})`;
-                }
-                
-                addToCart({
-                    id: `custom-meal-${currentKebabForCustomization.id}-${finalKebabProtein}-${finalKebabSize}-${finalComboItemType}-${finalComboItemId}-${selectedSauces.join('-')}`,
-                    name: finalName,
-                    price: finalPrice,
-                    type: finalType,
-                    details: finalDetails,
-                    kebabId: currentKebabForCustomization.id,
-                    kebabProtein: finalKebabProtein,
-                    kebabSize: finalKebabSize,
-                    comboItemType: finalComboItemType,
-                    comboItemId: finalComboItemId,
-                    comboSauces: finalComboSauces, // Store sauce IDs for macro calculation
-                    P: itemP, C: itemC, F: itemF, Cal: itemCal // Final calculated macros for this item
-                });
-
-                resetModalFullState(); // Close and reset modal
-                showSection('cart'); // Redirect to cart page after adding
-            });
-
             // Initial render and display
             renderFilters();
             renderKebabs();
             renderSidesAndDrinks();
             updateCartCount();
-            showSection('menu'); // Ensure menu is shown by default
+            showSection('menu');
         });
     </script>
 </body>
